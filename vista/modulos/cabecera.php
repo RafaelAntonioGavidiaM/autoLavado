@@ -21,9 +21,9 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="text-center">        AutoLavado</h1>
+            <h1 class="text-center">AutoLavado</h1>
             <br>
-            <p>Organice la informacion de sus clientes .</p>
+            <p class="text-center">Organice la informacion de sus clientes .</p>
         </div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
