@@ -32,29 +32,29 @@ $(document).ready(function() {
 
                     alert("ingreso")
 
-                    location.replace("principal.php")
-                    var ruta = "cabecera.php";
+                    location.replace("principal.php");
+                    /*   var ruta = "cabecera.php";
 
-                    var objData2 = new FormData();
-                    alert("este se envia", idUsuario);
-
-
-                    objData2.append("usuario", respuesta);
-                    objData2.append("ruta", ruta);
+                       var objData2 = new FormData();
+                       alert("este se envia", idUsuario);
 
 
 
+                       objData2.append("ruta", ruta);
 
-                    $.ajax({
-                        url: "principal.php",
-                        type: "post",
-                        dataType: "json",
-                        data: objData2,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
 
-                    })
+
+
+                       $.ajax({
+                           url: "principal.php",
+                           type: "post",
+                           dataType: "json",
+                           data: objData2,
+                           cache: false,
+                           contentType: false,
+                           processData: false,
+
+                       })*/
 
 
 
