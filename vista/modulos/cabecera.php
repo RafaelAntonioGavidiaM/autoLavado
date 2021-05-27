@@ -32,7 +32,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                   <!--  <li class="active"><a href="#">Home</a></li> -->
-                    <li><a href="#">Personal</a></li>
+                    <li><a href="personal">Personal</a></li>
                     <li><a href="#">Clientes</a></li>
                     <li><a href="#">Registro Vehiculos</a></li>
 
