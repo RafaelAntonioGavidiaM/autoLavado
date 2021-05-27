@@ -37,7 +37,7 @@
                     <li><a href="#">Registro Vehiculos</a></li>
 
 
-                    <li><a href="#">Parqueadero</a></li>
+                    <li><a href="parqueadero">Parqueadero</a></li>
                     <li><a href="#">Lavado</a></li>
                 </ul>
             </div>
