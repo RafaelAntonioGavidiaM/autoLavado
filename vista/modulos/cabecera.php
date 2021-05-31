@@ -15,7 +15,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src='main.js'></script>
+    <script src='vista/js/personal.js'></script>
 </head>
 
 <body>
