@@ -18,7 +18,17 @@ class loginControl{
         }else{
         $id=$objRespuesta[0];
 
-        echo json_encode($id);
+        echo json_encode($id); 
+        session_start(); // se inicia sesion 
+        $_SESSION["usuario"] = "logueado";
+        $_SESSION["idusuario"]=$id;//id Usuario que ingreso.
+
+
+        
+
+
+
+
 
             
         }
@@ -30,6 +40,8 @@ class loginControl{
 
 
     }
+
+    
 
 
 
