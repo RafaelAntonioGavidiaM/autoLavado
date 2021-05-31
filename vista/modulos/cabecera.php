@@ -14,8 +14,9 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='vista/css/cliente.css'>
+    
+    <script src='vista/js/cliente.js'></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                 <ul class="nav navbar-nav">
                   <!--  <li class="active"><a href="#">Home</a></li> -->
                     <li><a href="#">Personal</a></li>
-                    <li><a href="#">Clientes</a></li>
+                    <li><a href="cliente">Clientes</a></li>
                     <li><a href="#">Registro Vehiculos</a></li>
 
 
