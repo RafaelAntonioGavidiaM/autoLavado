@@ -23,11 +23,12 @@ $(document).ready(function() {
                 if (respuesta == "No") {
                     alert("No se puede realizar el ingreso")
                 } else {
-                    alert(idUsuario);
+
 
                     alert("ingreso")
 
                     location.replace("principal.php");
+<<<<<<< HEAD
                     /*   var ruta = "cabecera.php";
 
                        var objData2 = new FormData();
@@ -45,6 +46,19 @@ $(document).ready(function() {
                            processData: false,
 
                        })*/
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> origin/master
                 }
             }
         })
