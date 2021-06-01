@@ -39,7 +39,7 @@ class clienteModelo{
 
         $objRespuesta= Conexion::conectar()->prepare("SELECT * FROM dueño");
         $objRespuesta->execute();
-        $objRespuesta =$objRespuesta ->fetchAll();
+        $listaCliente =$objRespuesta ->fetchAll();
         $objRespuesta = null;
         return $listaCliente;
      }

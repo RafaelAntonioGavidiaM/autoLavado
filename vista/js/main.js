@@ -28,25 +28,6 @@ $(document).ready(function() {
                     alert("ingreso")
 
                     location.replace("principal.php");
-<<<<<<< HEAD
-                    /*   var ruta = "cabecera.php";
-
-                       var objData2 = new FormData();
-                       alert("este se envia", idUsuario);
-
-                       objData2.append("ruta", ruta);
-
-                       $.ajax({
-                           url: "principal.php",
-                           type: "post",
-                           dataType: "json",
-                           data: objData2,
-                           cache: false,
-                           contentType: false,
-                           processData: false,
-
-                       })*/
-=======
 
 
 
@@ -58,7 +39,6 @@ $(document).ready(function() {
 
 
 
->>>>>>> origin/master
                 }
             }
         })
