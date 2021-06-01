@@ -54,9 +54,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="personal">Personal</a></li>                      
                     <li><a href="cliente">Clientes</a></li>
-                    <li><a href="#">Registro Vehiculos</a></li>
+                    <li><a href="registroVehiculos">Registro Vehiculos</a></li>
                     <li><a href="parqueadero" id="btnParqueadero" >Parqueadero</a></li>
-                    <li><a href="#">Lavado</a></li>
+                    <li><a href="lavado">Lavado</a></li>
                 </ul>
             </div>
         </nav>
