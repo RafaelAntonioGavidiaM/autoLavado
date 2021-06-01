@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <script src='vista/js/vehiculos.js'></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                   <!--  <li class="active"><a href="#">Home</a></li> -->
                     <li><a href="#">Personal</a></li>
                     <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Registro Vehiculos</a></li>
+                    <li><a href="registroVehiculos">Registro Vehiculos</a></li>
 
 
                     <li><a href="parqueadero">Parqueadero</a></li>

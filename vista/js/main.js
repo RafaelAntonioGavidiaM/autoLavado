@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-
-
-
     $("#btnIngresar").click(function() {
         var user = $("#txtemail").val();
         var contraseña = $("#txtpwd").val();
@@ -21,9 +18,7 @@ $(document).ready(function() {
             processData: false,
             success: function(respuesta) {
 
-
                 var idUsuario = respuesta;
-
 
                 if (respuesta == "No") {
                     alert("No se puede realizar el ingreso")
@@ -38,12 +33,7 @@ $(document).ready(function() {
                        var objData2 = new FormData();
                        alert("este se envia", idUsuario);
 
-
-
                        objData2.append("ruta", ruta);
-
-
-
 
                        $.ajax({
                            url: "principal.php",
@@ -55,35 +45,8 @@ $(document).ready(function() {
                            processData: false,
 
                        })*/
-
-
-
-
-
-
-
-
                 }
-
-
-
-
-
-
-
-
             }
-
         })
-
-
-
-
     })
-
-
-
-
-
-
 })
