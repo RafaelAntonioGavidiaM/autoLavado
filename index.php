@@ -27,10 +27,10 @@
 
 
     <div class="container">
-  <div id="login" class="row">
+    <div  class="row">
     <div class="col-lg-4"></div>
     <div  class="col-lg-4">
-    <form>
+    
             <div class="form-group">
                 
             <label for="txtemail">Usuario:</label>    <input type="text" class="form-control" id="txtemail">
@@ -41,7 +41,7 @@
             </div>
 
             <button id="btnIngresar"  class="btn btn-primary">Ingresar</button>
-        </form>
+        
 
 
     </div>

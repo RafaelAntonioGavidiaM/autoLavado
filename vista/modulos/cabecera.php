@@ -20,28 +20,42 @@
 
     <script src='main.js'></script>
     <script src='vista/js/personal.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='vista/css/cliente.css'>
+    
+    <script src='vista/js/cliente.js'></script>
+    <script src='vista/js/usuarioLogin.js'></script>
+    <script src='vista/js/parqueadero.js'></script>
+
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="text-center">AutoLavado</h1>
+            <h1 class="text-center">AutoLavado
+                
+
+            </h1>
             <br>
             <p class="text-center">Organice la informacion de sus clientes .</p>
         </div>
+        <br>
+        <div id="datosPersonales">
+
+        </div>
+
+
+
+
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                   
+
                 </div>
                 <ul class="nav navbar-nav">
-                  <!--  <li class="active"><a href="#">Home</a></li> -->
-                    <li><a href="personal">Personal</a></li>
-                    <li><a href="#">Clientes</a></li>
+                    <li><a href="personal">Personal</a></li>                      
+                    <li><a href="cliente">Clientes</a></li>
                     <li><a href="#">Registro Vehiculos</a></li>
-
-
-                    <li><a href="parqueadero">Parqueadero</a></li>
+                    <li><a href="parqueadero" id="btnParqueadero" >Parqueadero</a></li>
                     <li><a href="#">Lavado</a></li>
                 </ul>
             </div>

@@ -24,5 +24,23 @@ class loginModelo{
 
 
     }
+
+    public static function mdlConsultarUsuarioLogueado($idUsuario){
+        $objConsulta = conexion::conectar()->prepare("SELECT * from personal where idPersonal=:id");
+        $objConsulta->bindParam(":id",$idUsuario,PDO::PARAM_INT);
+      
+
+        $objConsulta->execute();
+
+        $lista=$objConsulta->fetch();
+
+        $objConsulta=null;
+
+        return $lista;
+
+
+
+
+    }
 }
 
