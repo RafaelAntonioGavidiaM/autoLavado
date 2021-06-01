@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    
+</div>    
 <!---modal de modificar personal------>
 
 <!-- Modal -->
@@ -106,6 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txtModFoto">Fotografia:</label>
+                        <img src="" id="modFoto">
                         <input type="file" class="form-control" id="txtModFoto">
                     </div>
                     <div class="form-group">
@@ -120,3 +121,4 @@
 
         </div>
     </div>
+</div>

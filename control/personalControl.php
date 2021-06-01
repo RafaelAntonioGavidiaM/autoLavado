@@ -9,6 +9,7 @@ class personalControl{
     public $apellidos;
     public $foto;
     public $contraseña;
+    public $fotoAntigua;
 
     public function ctrListarPersonal(){
 
@@ -25,9 +26,16 @@ class personalControl{
 
     }
 
-    public function ctrModPersonal(){
+    public function ctrModPersonal_1(){
 
 
+
+
+    }
+
+    public function ctrModPersonal_2(){
+
+        
 
 
     }
@@ -59,18 +67,6 @@ if (isset($_POST["documento"])  && isset($_POST["nombre"])  && isset($_POST["ape
 
 }
 
-if (isset($_POST["idModPersonal"]) && isset($_POST["modDocumento"]) && isset($_POST["modNombre"]) && isset($_POST["modApellidos"]) && isset($_POST["modContraseña"])) {
-   
-    $objModPersonal = new personalControl();
-    $objModPersonal->idPersonal = $_POST["idModPersonal"];
-    $objModPersonal->documento = $_POST["modDocumento"];
-    $objModPersonal->nombre = $_POST["modNombre"];
-    $objModPersonal->apellidos = $_POST["modApellidos"];
-    $objRegPersonal->foto = $_FILES["modFoto"];
-    $objModPersonal->contraseña = $_POST["modContraseña"];
-    $objModPersonal-> ctrModPersonal();
-
-}
 
 if (isset($_POST["idDeletePersonal"]) && isset($_POST["deleteFoto"])) {
     
@@ -80,3 +76,32 @@ if (isset($_POST["idDeletePersonal"]) && isset($_POST["deleteFoto"])) {
     $objDeletePersonal-> ctrDeletePersonal();
 
 }
+
+
+if ( isset($_POST["opcion1"]) == "fotoNormal") {
+    
+    $objModPersonal =  new personalControl();
+    $objModPersonal->idPersonal = $_POST["idModPersonal"];   
+    $objModPersonal->documento = $_POST["modDocumento"];
+    $objModPersonal->nombre = $_POST["modNombre"];
+    $objModPersonal->apellidos = $_POST["modApellidos"];
+    $objModPersonal->foto = $_POST["modFoto"];
+    $objModPersonal->contraseña = $_POST["modContraseña"];
+    $objModPersonal-> ctrModPersonal_1();
+    
+}
+
+if ( isset($_POST["opcion2"]) == "fotoArray"){
+
+    $objModPersonal =  new personalControl();
+    $objModPersonal->idPersonal = $_POST["idModPersonal"];   
+    $objModPersonal->documento = $_POST["modDocumento"];
+    $objModPersonal->nombre = $_POST["modNombre"];
+    $objModPersonal->apellidos = $_POST["modApellidos"];
+    $objModPersonal->foto = $_FILES["modFoto"];
+    $objModPersonal->fotoAntigua = $_POST["fotoAnterior"];
+    $objModPersonal->contraseña = $_POST["modContraseña"];
+    $objModPersonal-> ctrModPersonal_2();
+}
+
+

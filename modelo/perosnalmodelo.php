@@ -16,6 +16,17 @@ class PersonalModelo
         return $listaPersonal;
     }
 
+    public static function mdlBuscarPersonal($idPersonal)
+    {
+
+        $objBuscarPersonal = conexion::conectar()->prepare("SELECT * FROM personal WHERE idPersonal= '$idPersonal'");
+        $objBuscarPersonal->execute();
+        $BuscarPersonal = $objBuscarPersonal->fetch();
+        $objBuscarPersonal = null;
+        return $BuscarPersonal;
+    }
+
+
 
     public static function mdlRegPersonal($documento, $nombre, $apellidos, $foto, $contraseña)
     {
@@ -128,5 +139,32 @@ class PersonalModelo
         return $mensaje;
 
 
+    }
+
+
+    public static function mdlModificarSinCambioFoto(){
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    public static function mdlModificarConCambioFoto(){
+
+
+
+
+
+
+
+        
     }
 }
