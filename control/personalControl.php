@@ -28,15 +28,15 @@ class personalControl{
 
     public function ctrModPersonal_1(){
 
-
-
+        $objRespuesta =  PersonalModelo::mdlModificarSinCambioFoto($this->idPersonal,$this->documento,$this->nombre,$this->apellidos,$this->foto,$this->contraseña);
+        echo json_encode($objRespuesta);
 
     }
 
     public function ctrModPersonal_2(){
 
-        
-
+        $objRespuesta = PersonalModelo::mdlModificarConCambioFoto($this->idPersonal,$this->documento,$this->nombre,$this->apellidos,$this->foto,$this->fotoAntigua,$this->contraseña);
+        echo json_encode($objRespuesta);
 
     }
 

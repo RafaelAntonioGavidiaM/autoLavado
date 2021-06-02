@@ -46,5 +46,6 @@ if (isset($_GET["personal"])) {
     $objPdf->SetFont('Arial', 'I', 16);
     $objPdf->Cell(40, 10, 'Documento :' . ' ' . $datos["documento"]);
     $objPdf->ln(6.5);
+    $objPdf->Output();
 
 }
