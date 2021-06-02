@@ -34,7 +34,7 @@
                         <input type="file" class="form-control" id="txtImagen">
                     </div>
 
-                    <button id="btnGuardar"  type="button"  class="btn btn-primary" >Guardar</button>
+                    <button id="btnGuardarVehiculo"  type="button"  class="btn btn-primary" >Guardar</button>
                     
                 </form>
                 <br>
