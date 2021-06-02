@@ -39,9 +39,53 @@ class clienteModelo{
 
         $objRespuesta= Conexion::conectar()->prepare("SELECT * FROM dueño");
         $objRespuesta->execute();
-        $objRespuesta =$objRespuesta ->fetchAll();
+        $listaCliente =$objRespuesta ->fetchAll();
         $objRespuesta = null;
         return $listaCliente;
+     }
+
+     public static function mdlEditar($idDueño,$documento,$nombre,$apellidos,$direccion,$telefono,$email){
+       
+
+        $mensaje = "";
+        try {
+            $objRespuesta = Conexion :: conectar()->prepare("UPDATE dueño SET documento ='$documento', nombre= '$nombre', apellidos= '$apellidos',direccion ='$direccion', telefono='$telefono', email = '$email' WHERE idDueño='$idDueño'");          
+            
+            if ($objRespuesta->execute()) {
+                $mensaje = "ok";
+            } else {
+                $mensaje = "error";
+            }
+
+            $objRespuesta=null;
+        } catch (Exception $e) {
+            $mensaje = $e;
+        }
+
+        return $mensaje;  
+             
+       
+     }
+
+     public static function mdlEliminar($idDueño){
+          
+         $mensaje ="";
+         try {
+            $objRespuesta = Conexion::conectar()->prepare("DELETE From dueño WHERE idDueño='$idDueño'");
+            
+
+            if ($objRespuesta->execute()) {
+                $mensaje = "ok";
+            } else {
+                $mensaje = "error";
+            }
+
+            $objRespuesta=null;
+        } catch (Exception $e) {
+            $mensaje = $e;
+        }
+
+        return $mensaje;
      }
 
 
