@@ -157,8 +157,6 @@ $(document).ready(function () {
             
         }
             
-        
-        
         objData.append("idModPersonal", idPersonal);
         objData.append("modDocumento", docuemnto);
         objData.append("modNombre", nombre);
@@ -166,8 +164,6 @@ $(document).ready(function () {
         objData.append("modFoto", rutaFoto);
         objData.append("modContraseña", contraseña);
         objData.append("fotoAnterior",fotoAnterior);
-
-
         $.ajax({
 
             url: "control/personalControl.php",

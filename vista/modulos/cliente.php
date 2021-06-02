@@ -1,70 +1,65 @@
 <div class="container">
 
-<div class="row">
-  <div class="col-lg-4">
+ <div class="row">
+     <div class="col-lg-4">
   
-  <h2>Registrar cliente</h2>
-  <form action="">
-    <div class="form-group">
-      <label for="documento">Documento:</label>
-      <input type="text" class="form-control" id="txtDocumento" >
-    </div>
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" class="form-control" id="txtNombre" >
-    </div>
-    <div class="form-group">
-      <label for="apellido">Apellido:</label>
-      <input type="text" class="form-control" id="txtApellido" >
-    </div>
-    <div class="form-group">
-      <label for="direccion">Direccion:</label>
-      <input type="text" class="form-control" id="txtDireccion" >
-    </div>
-    <div class="form-group">
-      <label for="telefono">Telefono:</label>
-      <input type="text" class="form-control" id="txtTelefono" >
-    </div>
-
-
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="txtEmail" >
-    </div>
+           <h2>Registrar cliente</h2>
+           <form action="">
+                   <div class="form-group">
+                       <label for="documento">Documento:</label>
+                       <input type="text" class="form-control" id="txtDocumento" >
+                   </div>
+                   <div class="form-group">
+                       <label for="nombre">Nombre:</label>
+                       <input type="text" class="form-control" id="txtNombre" >
+                   </div>
+                   <div class="form-group">
+                         <label for="apellido">Apellido:</label>
+                         <input type="text" class="form-control" id="txtApellido" >
+                   </div>
+                   <div class="form-group">
+                       <label for="direccion">Direccion:</label>
+                       <input type="text" class="form-control" id="txtDireccion" >
+                   </div>
+                   <div class="form-group">
+                       <label for="telefono">Telefono:</label>
+                       <input type="text" class="form-control" id="txtTelefono" >
+                   </div>
+                   <div class="form-group">
+                       <label for="email">Email:</label>
+                       <input type="text" class="form-control" id="txtEmail" >
+                   </div>
     
-    <button  id="btnRegistrar" type="button" class="btn btn-primary">Registrar</button>
-  </form>
-  
-  
-  </div>
+                 <button  id="btnRegistrar" type="button" class="btn btn-primary">Registrar</button>
+            </form>
+       </div>
 
-  <div class="col-lg-8">
-  <h2>Clientes registrados</h2>
+          <div class="col-lg-8">
+                <h2>Clientes registrados</h2>
              
-  <table id="tablaCliente" class="table table-hover">
-    <thead>
-      <tr>
-        <th>Documento</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Direccion</th>
-        <th>Telefono</th>
-        <th>Email</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="cuerpoTablaCliente">
+                   <table id="tablaCliente" class="table table-hover">
+                      <thead>
+                       <tr>
+                             <th>Documento</th>
+                             <th>Nombre</th>
+                             <th>Apellido</th>
+                             <th>Direccion</th>
+                             <th>Telefono</th>
+                             <th>Email</th>
+                             <th>Acciones</th>
+                       </tr>
+                      </thead>
+                        <tbody id="cuerpoTablaCliente">
       
-    </tbody>
-  </table>
-        </div>
-  </div>
+                        </tbody>
+                     </table>
+           </div>
+    </div>
 
-
-  </div>
+ 
 
 <!-- Modal -->
-<div class="modal fade" id="modalEditar" role="dialog">
+  <div class="modal fade" id="modalEditar" role="dialog">
            <div class="modal-dialog">
                <!-- Modal content-->
                <div class="modal-content">
@@ -97,7 +92,7 @@
 
                            <div class="form-group">
                                <label for="txtModTelefono">Telefono:</label>
-                               <input type="text" class="form-control" id="txtModColor">
+                               <input type="text" class="form-control" id="txtModTelefono">
                            </div>
 
                            <div class="form-group">
@@ -108,14 +103,8 @@
                    </div>
 
                    <div class="modal-footer">
-                       <button id="btnModCliente" idUsuario="" type="button" class="btn btn-primary">Editar</button>
+                       <button id="btnModDueño" idDueño="" type="button" class="btn btn-primary">Editar</button>
          </div>
- </div>
-
-   
-
-
-
-  
-  
+   </div>
+ 
 </div>

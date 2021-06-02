@@ -142,27 +142,78 @@ class PersonalModelo
     }
 
 
-    public static function mdlModificarSinCambioFoto(){
+    public static function mdlModificarSinCambioFoto($idPersonal,$documento,$nombre,$apellidos,$foto,$contraseña){
 
 
+        $mensaje =  "";
+        
+
+        try {
+
+            $objRespuesta = conexion::conectar()->prepare("UPDATE personal SET documento='$documento',nombre='$nombre',apellidos='$apellidos', foto='$foto',contraseña='$contraseña' WHERE idPersonal='$idPersonal'");
+
+        if ($objRespuesta->execute()){
+            $mensaje = "ok";
+        }else {
+            $mensaje = "error";
+        }
+
+        $objRespuesta =  null;
+
+        } catch (Exception $e) {
+
+           $mensaje = $e;
+        }
+        
 
 
-
-
-
-
-
+        return $mensaje;
 
 
     }
 
 
-    public static function mdlModificarConCambioFoto(){
+    public static function mdlModificarConCambioFoto($idPersonal,$documento,$nombre,$apellidos,$foto,$fotoAnterior,$contraseña){
 
+        $mensaje = "";
+        $nombreArchivo = $foto['name'];
+        $rutaArchivo = "../vista/imagenesPersonal/" . $nombreArchivo;
+        $extension = substr($nombreArchivo, -4);
+        $url =  "vista/imagenesPersonal/" . $nombreArchivo;
 
+        if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
+            
+            if (move_uploaded_file($foto["tmp_name"], $rutaArchivo)) {
 
+                if (unlink("../".$fotoAnterior)){
 
-
+                    try {
+        
+                        $objRespuesta = conexion::conectar()->prepare("UPDATE personal SET documento='$documento',nombre='$nombre',apellidos='$apellidos', foto='$url',contraseña='$contraseña' WHERE idPersonal='$idPersonal'");
+            
+                    if ($objRespuesta->execute()){
+                        $mensaje = "ok";
+                    }else {
+                        $mensaje = "error";
+                    }
+            
+                    $objRespuesta =  null;
+            
+                    } catch (Exception $e) {
+            
+                       $mensaje = $e;
+                    }
+                    
+                }else {
+                    
+                    $mensaje = "nose puede cambiar la foto del registro";
+                }
+        
+            }
+        }
+        
+        
+        return $mensaje;
 
 
         
