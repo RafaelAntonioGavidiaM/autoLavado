@@ -30,6 +30,14 @@ class vehiculosControl{
         echo json_encode($ObjRespuesta);
     }
 
+    public function ctrlCargarDuenos(){
+
+        $objRespuesta=VehiculosModelo::mdlCargarDuenos();
+        echo json_encode($objRespuesta);
+
+
+    }
+
 }
 
 if (isset($_POST["modelo"]) && isset($_POST["dueño"]) && isset($_POST["color"]) && isset($_POST["placa"])){
@@ -62,4 +70,10 @@ if (isset($_POST["eliminarId"])){
     $objRespuesta = new vehiculosControl();
     $objRespuesta->idCarro = $_POST["eliminarId"];
     $objRespuesta->ctrEliminar();
+}
+
+if (isset($_POST["cargarDueno"])) {
+    $objRespuesta = new vehiculosControl();
+    $objRespuesta->ctrlCargarDuenos();
+
 }

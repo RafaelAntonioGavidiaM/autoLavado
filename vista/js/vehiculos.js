@@ -5,15 +5,17 @@ $(document).ready(function() {
     /*--------------------------------------------------------------------------------------------------------*/
 
     cargarDatos();
+    cargarDueno();
     $("#btnGuardarVehiculo").click(function() {
+        alert("HolaMundox3");
         var modelo = $("#txtModelo").val();
-        var dueño = $("#txtDueño").val();
+        var dueño = $("#duenoSelect").val();
         var color = $("#txtColor").val();
         var placa = $("#txtPlaca").val();
         var imagen = document.getElementById("txtImagen").files[0];
         var objData = new FormData();
         alert(modelo);
-        alert(imagen)
+        alert(imagen);
         objData.append("modelo", modelo);
         objData.append("dueño", dueño);
         objData.append("color", color);
@@ -29,11 +31,76 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function(respuesta) {
-                cargarDatos();
-                alert(respuesta);
+                if (respuesta == "ok") {
+                    alert(respuesta); //si realizo registro
+
+
+
+                }
+
+
             }
         })
     })
+
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------CARGAR DATOS DUEÑO---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
+
+    function cargarDueno() {
+        var mensaje = "ok";
+        var objData = new FormData();
+
+        objData.append("cargarDueno", mensaje);
+
+        $.ajax({
+            url: "control/vehiculosControl.php",
+            type: "post",
+            dataType: "json",
+            data: objData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(respuesta) {
+
+                console.log(respuesta);
+
+                var interface = '';
+                respuesta.forEach(cargarduenoCarro);
+
+                function cargarduenoCarro(item, index) {
+
+                    interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
+
+
+
+
+
+
+
+
+                }
+
+                alert(interface);
+
+                $("#duenoSelect").html(interface);
+
+
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+    }
+
+
 
 
     /*--------------------------------------------------------------------------------------------------------*/
