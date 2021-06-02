@@ -67,7 +67,7 @@ $(document).ready(function() {
                 interface += '<td>' + item.email + '</td>';
                 interface += '<td>';
                 interface += '<div class="btn-group">';
-                interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editar" idDueño="' + item.idDueño + '"  documento="' + item.documento + '" nombre="' + item.nombre + '" apellido="' + item.apellido + '" direccion="' + item.direccion + '" telefono="' + item.telefono + '" email="' + item.email + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
+                interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editar" idDueño="' + item.idDueño + '"  documento="' + item.documento + '" nombre="' + item.nombre + '" apellido="' + item.apellidos+ '" direccion="' + item.direccion + '" telefono="' + item.telefono + '" email="' + item.email + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
                 interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminar" idDueño="' + item.idDueño + '"><span class="glyphicon glyphicon-remove"></span></button>';
                 interface += '</div>';
                 interface += '</td>';
@@ -82,7 +82,7 @@ $(document).ready(function() {
    }
     
 
-   $("#tablaCliente").on("click", "#btn- editar",function(){
+   $("#tablaCliente").on("click", "#btn-editar",function(){
     var idDueño = $(this).attr("idDueño");
     var documento= $(this).attr("documento");
     var nombre = $(this).attr("nombre");
@@ -143,8 +143,8 @@ $(document).ready(function() {
     var idDueño = $(this).attr("idDueño");
 
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Esta seguro de eliminar el registro?',
+        text: "Si lo elimina no podra recuperarlo!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
 
             $.ajax({
-                url: "control/parqueaderoControl.php",
+                url: "control/clienteControl.php",
                 type: "post",
                 dataType: "json",
                 data: objData,
@@ -176,12 +176,7 @@ $(document).ready(function() {
 
 
 
-                    } else {
-
-                        alert(respuesta);
-
-
-                    }
+                    } 
 
 
 

@@ -1,15 +1,19 @@
 $(document).ready(function() {
 
-    cargarDatos();
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------CARGAR DATOS---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
 
-    $("#btnGuardar").click(function() {
+    cargarDatos();
+    $("#btnGuardarVehiculo").click(function() {
         var modelo = $("#txtModelo").val();
         var dueño = $("#txtDueño").val();
         var color = $("#txtColor").val();
         var placa = $("#txtPlaca").val();
-        var imagen = $("#txtImagen").val();
+        var imagen = document.getElementById("txtImagen").files[0];
         var objData = new FormData();
         alert(modelo);
+        alert(imagen)
         objData.append("modelo", modelo);
         objData.append("dueño", dueño);
         objData.append("color", color);
@@ -32,6 +36,9 @@ $(document).ready(function() {
     })
 
 
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------LISTAR DATOS---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
     function cargarDatos() {
         var listaVehiculos = "ok";
         var objListarVehiculos = new FormData();
@@ -57,11 +64,11 @@ $(document).ready(function() {
                     interface += '<td>' + item.nombre + " " + item.apellidos + '</td>';
                     interface += '<td>' + item.color + '</td>';
                     interface += '<td>' + item.placa + '</td>';
-                    interface += '<td>' + item.imagen + '</td>';
+                    interface += '<td><img src="' + item.imagen + '" high="40" width="40"></td>';
                     interface += '<td>';
                     interface += '<div class="btn-group">';
                     interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editar" idCarro="' + item.idCarro + '"  modelo="' + item.modelo + '" dueño="' + item.idDueño + '" color="' + item.color + '" placa="' + item.placa + '" imagen="' + item.imagen + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
-                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminar" idCarro="' + item.idCarro + '"><span class="glyphicon glyphicon-remove"></span></button>';
+                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminar" idCarro="' + item.idCarro + '"><span class="glyphicon glyphicon-trash"></span></button>';
                     interface += '</div>';
                     interface += '</td>';
                     interface += '</tr>';
@@ -72,6 +79,10 @@ $(document).ready(function() {
         })
     }
 
+
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------EDITAR DATOS---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
 
     $("#tablacarro").on("click", "#btn-editar", function() {
         var idCarro = $(this).attr("idCarro");
@@ -89,6 +100,10 @@ $(document).ready(function() {
         $("#btnModCarro").attr("idCarro", idCarro);
     })
 
+
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*---------------------------------------------ELIMINAR DATOS---------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
 
     $("#tablaCarro").on("click", "#btn-eliminar", function() {
         var idCarro = $(this).attr("idCarro");
@@ -133,6 +148,9 @@ $(document).ready(function() {
     })
 
 
+    /*--------------------------------------------------------------------------------------------------------*/
+    /*------------------------------------------CARGAR DATOS MODAL--------------------------------------------*/
+    /*--------------------------------------------------------------------------------------------------------*/
 
     $("#btnModCarro").click(function() {
         var idCarro = $(this).attr("idCarro");

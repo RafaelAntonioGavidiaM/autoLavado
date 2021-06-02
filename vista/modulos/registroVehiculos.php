@@ -8,7 +8,7 @@
         <br>
         <div class="row">
             <div class="col-lg-4">
-                <form action="">
+                <form action="" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="txtModelo">Modelo:</label>
                         <input type="text" class="form-control" id="txtModelo">
@@ -31,12 +31,13 @@
 
                     <div class="form-group">
                         <label for="txtImagen">Imagen:</label>
-                        <input type="text" class="form-control" id="txtImagen">
+                        <input type="file" class="form-control" id="txtImagen">
                     </div>
 
-                    <button id="btnGuardar" type="button" class="btn btn-primary">Guardar</button>
+                    <button id="btnGuardarVehiculo"  type="button"  class="btn btn-primary" >Guardar</button>
                     
                 </form>
+                <br>
             </div>
 
             <div class="col-lg-8">
@@ -100,7 +101,7 @@
 
                             <div class="form-group">
                                 <label for="txtModImagen">Imagen:</label>
-                                <input type="text" class="form-control" id="txtModImagen">
+                                <input type="file" class="form-control" id="txtModImagen">
                             </div>
                         </form>
                     </div>

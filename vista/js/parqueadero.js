@@ -444,7 +444,7 @@ $(document).ready(function() {
 
 
 
-    $("#btnGuardar").click(function() {
+    $("#btnGuardarParqueadero").click(function() {
 
 
 

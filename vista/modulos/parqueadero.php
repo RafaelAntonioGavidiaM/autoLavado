@@ -47,7 +47,7 @@
 
         </div>
         <div class="modal-footer">
-          <button id="btnGuardar" type="button" class="btn btn-primary" data-dismiss="modal">Guardar Registro</button>
+          <button id="btnGuardarParqueadero" type="button" class="btn btn-primary" data-dismiss="modal">Guardar Registro</button>
         </div>
       </div>
 
