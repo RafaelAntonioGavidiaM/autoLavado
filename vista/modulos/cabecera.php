@@ -15,6 +15,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    
+   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"> </script>
+
+
     <script src='vista/js/usuarioLogin.js'></script>
     <script src='vista/js/parqueadero.js'></script>
 
