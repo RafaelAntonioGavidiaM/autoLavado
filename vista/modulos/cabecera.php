@@ -19,6 +19,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src='main.js'></script>
+    <script src='vista/js/vehiculos.js'></script>
     <script src='vista/js/personal.js'></script>
     <link rel='stylesheet' type='text/css' media='screen' href='vista/css/cliente.css'>
     
