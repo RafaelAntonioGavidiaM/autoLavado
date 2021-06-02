@@ -138,50 +138,65 @@ $(document).ready(function() {
 
    })
 
-   $("#tablaCliente").on("click", "#btn-eliminar", function(){
+   $("#tablaCliente").on("click","#btn-eliminar", function() {
        
     var idDueño = $(this).attr("idDueño");
 
-    swal({
-        title: "Esta seguro de eliminar el registro?",
-        text: "Recuerde que si lo elimina no tendra formas de recuperarlo",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            var objData = new FormData();
+            objData.append("idDueño", idDueño);
+
+
             $.ajax({
-                url: "control/clienteControl.php",
+                url: "control/parqueaderoControl.php",
                 type: "post",
-                data:{'idDueño':idDueño},
-                success:function(){
-                    
-                    swal(
-                        "Registro eliminado exitosamente!", {
-                        icon: "success",
-                       
-                    });
-                    cargarDatos();
-                   
-                 
-                   
+                dataType: "json",
+                data: objData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(respuesta) {
+                    if (respuesta == "ok") {
+                        Swal.fire(
+                            'Eliminado!',
+                            'El registro ha sido eliminado.',
+                            'success'
+                        )
+                        cargarDatos();
+
+
+
+                    } else {
+
+                        alert(respuesta);
+
+
+                    }
+
+
+
+
+
+
                 }
-           })
+
+            })
+
+
+
         }
-        else {
-          swal("Su registro esta a salvo!",{
-          icon:"success",
-          })
-        }
-      
-    
     })
 
-
-
-   })
-    
-
+})
 
 })
