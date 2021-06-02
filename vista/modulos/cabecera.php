@@ -14,12 +14,16 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src='main.js'></script>
+    <script src='vista/js/vehiculos.js'></script>
+    <script src='vista/js/personal.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='vista/css/cliente.css'>
     
-   <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"> </script>
-
-
+    <script src='vista/js/cliente.js'></script>
     <script src='vista/js/usuarioLogin.js'></script>
     <script src='vista/js/parqueadero.js'></script>
 
@@ -49,14 +53,11 @@
 
                 </div>
                 <ul class="nav navbar-nav">
-                    <!--  <li class="active"><a href="#">Home</a></li> -->
-                    <li><a href="#">Personal</a></li>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Registro Vehiculos</a></li>
-
-
+                    <li><a href="personal">Personal</a></li>                      
+                    <li><a href="cliente">Clientes</a></li>
+                    <li><a href="registroVehiculos">Registro Vehiculos</a></li>
                     <li><a href="parqueadero" id="btnParqueadero" >Parqueadero</a></li>
-                    <li><a href="#">Lavado</a></li>
+                    <li><a href="lavado">Lavado</a></li>
                 </ul>
             </div>
         </nav>

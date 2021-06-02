@@ -40,8 +40,12 @@
             </div>
 
             <div class="col-lg-8">
+                <center>
                 <h2>Registro Autos</h2>
+                <center>
                 <p>Organice informacion sobre registro de Autos</p>
+                <br>
+
                 <table id="tablaUsuarios" class="table table-bordered">
                     <thead>
                         <tr>
@@ -102,7 +106,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button id="btnModCarro" idUsuario="" type="button" class="btn btn-primary">Editar</button>
+                        <button id="btnModCarro" idCarro="" type="button" class="btn btn-primary">Modificar</button>
                     </div>
                 </div>
 

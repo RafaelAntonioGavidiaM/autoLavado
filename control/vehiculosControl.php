@@ -49,7 +49,7 @@ if (isset($_POST["listaVehiculos"]) == "ok"){
 
  if (isset($_POST["modIdCarro"]) && isset($_POST["modModelo"]) && isset($_POST["modDueño"]) && isset($_POST["modColor"])  && isset($_POST["modPlaca"]) && isset($_POST["modImagen"])){
     $ObjModCarro = new vehiculosControl();
-    $$ObjModCarro->idUsuario = $_POST["modIdCarro"];
+    $$ObjModCarro->idCarro = $_POST["modIdCarro"];
     $$ObjModCarro->modelo = $_POST["modModelo"];
     $$ObjModCarro->dueño = $_POST["modDueño"];
     $$ObjModCarro->color = $_POST["modColor"];

@@ -61,8 +61,11 @@ alter table parqueadero add foreign key (idPersonal) references personal(idPerso
 alter table parqueadero add foreign key(idCarro) references carro(idCarro);
 alter table lavado add foreign key(idCarro) references carro(idCarro);
 
+ALTER TABLE `autolavado`.`personal` 
+ADD COLUMN `foto` VARCHAR(100) NULL AFTER `apellidos`;
 
+insert into dueño (documento,nombre,apellidos,direccion,telefono,email)
+values ('10575754','Johan','Pulido','Carrera 10 N 1-5','3105497217','johanpulido4@gmail.com');
 
-
-
+SELECT carro.idCarro,carro.modelo,carro.placa, carro.color,carro.imagen,dueño.nombre,dueño.apellidos,dueño.idDueño from carro inner join dueño on carro.idDueño=dueño.idDueño
 

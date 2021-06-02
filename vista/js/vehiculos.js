@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     cargarDatos();
 
-    $("#btnGuardar").click(function () {
+    $("#btnGuardar").click(function() {
         var modelo = $("#txtModelo").val();
         var dueño = $("#txtDueño").val();
         var color = $("#txtColor").val();
@@ -24,7 +24,7 @@ $(document).ready(function () {
             cache: false,
             contentType: false,
             processData: false,
-            success: function (respuesta) {
+            success: function(respuesta) {
                 cargarDatos();
                 alert(respuesta);
             }
@@ -45,7 +45,7 @@ $(document).ready(function () {
             cache: false,
             contentType: false,
             processData: false,
-            success: function (respuesta) {
+            success: function(respuesta) {
 
                 var interface = '';
                 respuesta.forEach(cargarTablacarro);
@@ -54,7 +54,7 @@ $(document).ready(function () {
                     interface += '<tr>';
 
                     interface += '<td>' + item.modelo + '</td>';
-                    interface += '<td>' + item.nombre + " " + item.apellido + '</td>';
+                    interface += '<td>' + item.nombre + " " + item.apellidos + '</td>';
                     interface += '<td>' + item.color + '</td>';
                     interface += '<td>' + item.placa + '</td>';
                     interface += '<td>' + item.imagen + '</td>';
@@ -73,7 +73,7 @@ $(document).ready(function () {
     }
 
 
-    $("#tablacarro").on("click", "#btn-editar", function () {
+    $("#tablacarro").on("click", "#btn-editar", function() {
         var idCarro = $(this).attr("idCarro");
         var modelo = $(this).attr("modelo");
         var dueño = $(this).attr("dueño");
@@ -90,16 +90,16 @@ $(document).ready(function () {
     })
 
 
-    $("#tablaCarro").on("click", "#btn-eliminar", function () {
-        var idUsuario = $(this).attr("idCarro");
+    $("#tablaCarro").on("click", "#btn-eliminar", function() {
+        var idCarro = $(this).attr("idCarro");
 
         swal({
-            title: "¿Esta seguro de eliminar este registro?",
-            text: "Una vez lo elimines no podras recuperar la información!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
+                title: "¿Esta seguro de eliminar este registro?",
+                text: "Una vez lo elimines no podras recuperar la información!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
             .then((willDelete) => {
                 if (willDelete) {
 
@@ -114,7 +114,7 @@ $(document).ready(function () {
                         cache: false,
                         contentType: false,
                         processData: false,
-                        success: function (respuesta) {
+                        success: function(respuesta) {
 
                             if (respuesta == "ok") {
 
@@ -134,7 +134,7 @@ $(document).ready(function () {
 
 
 
-    $("#btnModCarro").click(function () {
+    $("#btnModCarro").click(function() {
         var idCarro = $(this).attr("idCarro");
         var modelo = $("#txtModModelo").val();
         var dueño = $("#txtModDueño").val();
@@ -157,7 +157,7 @@ $(document).ready(function () {
             cache: false,
             contentType: false,
             processData: false,
-            success: function (respuesta) {
+            success: function(respuesta) {
 
                 $("#modalEditar").modal('toggle');
                 cargarDatos();

@@ -29,14 +29,14 @@ class VehiculosModelo
     }
 
     public static function mdlListarTodos(){
-        $ObjRespuesta = Conexion::conectar()->prepare("SELECT * FROM carro");
+        $ObjRespuesta = Conexion::conectar()->prepare("SELECT carro.idCarro,carro.modelo,carro.placa, carro.color,carro.imagen,dueño.nombre,dueño.apellidos,dueño.idDueño from carro inner join dueño on carro.idDueño=dueño.idDueño");
         $ObjRespuesta->execute();
         $listaCarro = $ObjRespuesta->fetchAll();
         $ObjRespuesta = null;
         return $listaCarro;
     }
 
-    public static function mdlModificar($idCarro,($modelo, $dueño, $color, $placa, $imagen){
+    public static function mdlModificar($idCarro,$modelo, $dueño, $color, $placa, $imagen){
         $mensaje = "";
         try {
             $objRespuesta = Conexion::conectar()->prepare("UPDATE carro SET modelo='$modelo',dueño='$dueño',color='$color',placa='$placa',imagen='$imagen' WHERE idCarro='$idCarro'");
@@ -71,4 +71,3 @@ class VehiculosModelo
 }
 
 
-}
