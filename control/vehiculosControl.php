@@ -32,13 +32,13 @@ class vehiculosControl{
 
 }
 
-if (isset($_POST["modelo"]) && isset($_POST["dueño"]) && isset($_POST["color"]) && isset($_POST["placa"]) && isset($_POST["imagen"])){
+if (isset($_POST["modelo"]) && isset($_POST["dueño"]) && isset($_POST["color"]) && isset($_POST["placa"])){
     $ObjVehiculos = new vehiculosControl();
     $ObjVehiculos->modelo = $_POST["modelo"];
     $ObjVehiculos->dueño = $_POST["dueño"];
     $ObjVehiculos->color = $_POST["color"];
     $ObjVehiculos->placa = $_POST["placa"];
-    $ObjVehiculos->imagen = $_POST["imagen"];
+    $ObjVehiculos->imagen = $_FILES["imagen"];
     $ObjVehiculos->ctrInsertar();
 }
 

@@ -7,24 +7,46 @@ class VehiculosModelo
     public static function mdlInsertar($modelo, $dueño, $color, $placa, $imagen)
     {
 
-        $numero = $dueño;
         $mensaje = "";
-        try {
-            $objRespuesta = Conexion::conectar()->prepare("INSERT INTO carro(modelo,idDueño,color,placa,imagen) values (:modelo,:id,:color,:placa,:imagen)");
-            $objRespuesta->bindParam(":modelo", $modelo, PDO::PARAM_STR);
-            $objRespuesta->bindParam(":id", $numero, PDO::PARAM_INT);
-            $objRespuesta->bindParam(":color", $color, PDO::PARAM_STR);
-            $objRespuesta->bindParam(":placa", $placa, PDO::PARAM_STR);
-            $objRespuesta->bindParam(":imagen", $imagen, PDO::PARAM_STR);
-            if ($objRespuesta->execute()) {
-                $mensaje = "ok";
+        $nombreArchivo = $foto['name'];
+        $rutaArchivo = "../vista/imagenesPersonal/" . $nombreArchivo;
+        $extension = substr($nombreArchivo, -4);
+        $url =  "vista/imagenesPersonal/" . $nombreArchivo;
+
+
+        if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
+
+            if (move_uploaded_file($foto["tmp_name"], $rutaArchivo)) {
+
+                try {
+
+                    $objRespuesta = Conexion::conectar()->prepare("INSERT INTO carro(modelo,idDueño,color,placa,imagen) values (:modelo,:id,:color,:placa,:imagen)");
+                    $objRespuesta->bindParam(":modelo", $modelo, PDO::PARAM_STR);
+                    $objRespuesta->bindParam(":id", $numero, PDO::PARAM_INT);
+                    $objRespuesta->bindParam(":color", $color, PDO::PARAM_STR);
+                    $objRespuesta->bindParam(":placa", $placa, PDO::PARAM_STR);
+                    $objRespuesta->bindParam(":imagen", $url, PDO::PARAM_STR);
+
+
+                    if ($objRespuesta->execute()) {
+                        $mensaje = "ok";
+                    } else {
+                        $mesnaje = "error";
+                    }
+                } catch (Exception $e) {
+                    
+                    $mensaje = $e;
+
+                }
+
             } else {
-                $mensaje = "error";
+                $mensaje = "no fue posible subir el archivo";
             }
-            $objRespuesta = null;
-        } catch (Exception $e) {
-            $mensaje = $e;
+        } else {
+
+            $mensaje = "El tipo del archivo no es compatible solo se resive archivos jpg,png y jpng";
         }
+
         return $mensaje;
     }
 
