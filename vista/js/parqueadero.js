@@ -44,26 +44,10 @@ $(document).ready(function() {
                     concatenar += '<button id="Factura" type="button" class="btn btn-danger" idParqueadero="' + item.idParqueadero + '" >Factura</button>';
                     concatenar += '</td>';
                     concatenar += '</tr>';
-
-
-
-
-
-
-
                 }
-
-
-
                 $("#tablaParqueadero").html(concatenar);
-
-
             }
-
         })
-
-
-
     }
 
 
@@ -94,12 +78,6 @@ $(document).ready(function() {
 
         var idParqueadero = $(this).attr("idParqueadero");
         window.open("vista/informes/facturaParqueadero.php?idParqueadero=" + idParqueadero, "_blank");
-
-
-
-
-
-
     })
 
 

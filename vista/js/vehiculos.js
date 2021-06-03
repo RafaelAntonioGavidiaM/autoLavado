@@ -71,33 +71,13 @@ $(document).ready(function() {
                 function cargarduenoCarro(item, index) {
 
                     interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
-
-
-
-
-
-
-
-
                 }
 
                 alert(interface);
 
                 $("#duenoSelect").html(interface);
-
-
             }
         })
-
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -108,14 +88,14 @@ $(document).ready(function() {
     /*--------------------------------------------------------------------------------------------------------*/
     function cargarDatos() {
         var listaVehiculos = "ok";
-        var objListarVehiculos = new FormData();
-        objListarVehiculos.append("listaVehiculos", listaVehiculos);
+        var objListaVehiculos = new FormData();
+        objListaVehiculos.append("listaVehiculos", listaVehiculos);
 
         $.ajax({
             url: "control/vehiculosControl.php",
             type: "post",
             dataType: "json",
-            data: objListarVehiculos,
+            data: objListaVehiculos,
             cache: false,
             contentType: false,
             processData: false,
@@ -134,8 +114,8 @@ $(document).ready(function() {
                     interface += '<td><img src="' + item.imagen + '" high="40" width="40"></td>';
                     interface += '<td>';
                     interface += '<div class="btn-group">';
-                    interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editar" idCarro="' + item.idCarro + '"  modelo="' + item.modelo + '" dueño="' + item.idDueño + '" color="' + item.color + '" placa="' + item.placa + '" imagen="' + item.imagen + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
-                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminar" idCarro="' + item.idCarro + '"><span class="glyphicon glyphicon-trash"></span></button>';
+                    interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editarVehiculos" idCarro="' + item.idCarro + '"  modelo="' + item.modelo + '" dueño="' + item.idDueño + '" color="' + item.color + '" placa="' + item.placa + '" imagen="' + item.imagen + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
+                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminarVehiculos" idCarro="' + item.idCarro + '"><span class="glyphicon glyphicon-trash"></span></button>';
                     interface += '</div>';
                     interface += '</td>';
                     interface += '</tr>';
@@ -151,19 +131,20 @@ $(document).ready(function() {
     /*-----------------------------------------------EDITAR DATOS---------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------*/
 
-    $("#tablacarro").on("click", "#btn-editar", function() {
+    $("#tablacarro").on("click", "#btn-editarVehiculos", function() {
         var idCarro = $(this).attr("idCarro");
         var modelo = $(this).attr("modelo");
-        var dueño = $(this).attr("dueño");
+        var dueño = $(this).attr("dueno");
         var color = $(this).attr("color");
         var placa = $(this).attr("placa");
-        var imagen = $(this).attr("imagen");
+        imagen = $(this).attr("imagen");
+        $("#modimagen").attr("src",imagen);
 
         $("#txtModModelo").val(modelo);
-        $("#txtModDueño").val(dueño);
+        $("#modDuenoSelect").val(dueño);
         $("#txtModColor").val(color);
         $("#txtModPlaca").val(placa);
-        $("#txtModImagen").val(imagen);
+        $("#txtModImagen").val();
         $("#btnModCarro").attr("idCarro", idCarro);
     })
 
@@ -172,46 +153,38 @@ $(document).ready(function() {
     /*---------------------------------------------ELIMINAR DATOS---------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------*/
 
-    $("#tablaCarro").on("click", "#btn-eliminar", function() {
+    $("#tablaCarro").on("click", "#btn-eliminarVehiculos", function(){
+       
         var idCarro = $(this).attr("idCarro");
-
+    
         swal({
-                title: "¿Esta seguro de eliminar este registro?",
-                text: "Una vez lo elimines no podras recuperar la información!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-
-                    var objData = new FormData();
-                    objData.append("eliminarId", idCarro);
-
-                    $.ajax({
-                        url: "control/vehiculosControl.php",
-                        type: "post",
-                        dataType: "json",
-                        data: objData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function(respuesta) {
-
-                            if (respuesta == "ok") {
-
-                                swal("Se elimino registro");
-                                cargarDatos();
-                            } else {
-
-                            }
-                        }
-                    })
-
-                } else {
-                    swal("¡tu registro de encuentra a salvo!");
-                }
-            });
+            title: "¿Esta seguro de eliminar el registro?",
+            text: "Recuerde que si lo elimina no tendra formas de recuperarlo",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "control/vehiculosControl.php",
+                    type: "post",
+                    data:{'idCarro':idCarro},
+                    success:function(){
+                        swal(
+                            "Registro eliminado exitosamente!", {
+                            icon: "success",
+                        });
+                        cargarDatos();          
+                    }
+               })
+            }
+            else {
+              swal("Su registro esta a salvo!",{
+              icon:"success",
+              })
+            }
+        })
     })
 
 
@@ -222,10 +195,42 @@ $(document).ready(function() {
     $("#btnModCarro").click(function() {
         var idCarro = $(this).attr("idCarro");
         var modelo = $("#txtModModelo").val();
-        var dueño = $("#txtModDueño").val();
+        var dueño = $("#modDuenoSelect").val();
         var color = $("#txtModColor").val();
         var placa = $("#txtModPlaca").val();
-        var imagen = $("#txtModImagen").val();
+        var rutaImagen = "";
+        var opcion3 = "";
+        var opcion4 = ""
+
+        var imagenAnterior = "";
+        if ($("#txtModImagen").val() == null ||  $("#txtModImagen").val() == ""  ) {
+
+            alert("Hola");
+            rutaImagen = imagen;
+            opcion3 ="imagenNormal";
+        }
+        else{
+
+            alert("Hola mundo")
+            var imagenNueva = document.getElementById("txtModImagen").files[0];
+            rutaImagen = imagenNueva;
+            imagenAnterior = foto;
+            opcion4 ="imagenArray";
+            
+        }   
+        alert(rutaImagen);
+        
+        var objData = new FormData();
+        if (opcion3 = "imagenNormal" && opcion4 == "") {
+            alert("Hola")
+            objData.append("opcion3",opcion3);
+            
+        }else if (opcion4 = "imagenArray" && opcion3 == "") {
+            alert("Hola Mundo")
+            objData.append("opcion4",opcion4);
+        } else {
+            
+        }
 
         var objData = new FormData();
         objData.append("modIdCarro", idCarro);
@@ -233,7 +238,8 @@ $(document).ready(function() {
         objData.append("modDueño", dueño);
         objData.append("modColor", color);
         objData.append("modPlaca", placa);
-        objData.append("modImagen", imagen);
+        objData.append("modImagen", rutaImagen);
+        objData.append("imagenAnterior",imagenAnterior);
         $.ajax({
             url: "control/vehiculosControl.php",
             type: "post",
@@ -244,7 +250,13 @@ $(document).ready(function() {
             processData: false,
             success: function(respuesta) {
 
-                $("#modalEditar").modal('toggle');
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registro Exitoso',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 cargarDatos();
             }
         })
