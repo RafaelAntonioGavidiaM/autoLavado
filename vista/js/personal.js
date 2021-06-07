@@ -124,7 +124,7 @@ $(document).ready(function () {
         var apellidos = $("#txtModApellidos").val();
         var rutaFoto = "";
         var opcion1 = "";
-        var opcion2 = ""
+        var opcion2 = "";
         
         var fotoAnterior = "";
         if ($("#txtModFoto").val() == null ||  $("#txtModFoto").val() == ""  ) {
@@ -258,6 +258,24 @@ $(document).ready(function () {
         var idPersonal = $(this).attr("idPersonal");
 
         window.open("vista/informes/carnet.php?personal=" + idPersonal, "_blank")
+
+    })
+
+    $("#btnNewPersonal").click(function (){
+
+
+        $("#txtRegDocumento").val("");
+        $("#txtRegNombres").val("");
+        $("#txtRegApellidos").val("");
+        $("#txtFoto").val("");
+        $("#txtRegContraseña").val("");
+
+    })
+
+
+    $("#btnModPersonal").click(function (){
+
+        $("#txtModFoto").val("");
 
     })
 

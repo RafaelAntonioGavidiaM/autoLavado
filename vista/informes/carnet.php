@@ -26,7 +26,7 @@ if (isset($_GET["personal"])) {
     $datos = $objPdf->cargarDatos();
 
     $rutaImagene = "../../";
-    $rutaImagenColsis = "../../vista/imagenesPersonal/colsis_logotipo.png";
+    $rutaImagenColsis = "../../vista/imagenesPersonal/logo autolavado.png";
     $rutaImagenSena = "../../vista/imagenesPersonal/sena.png";
     $rutaImagenQr = "../../vista/imagenesPersonal/qr.jpg";
     $RutaImagenCarnet = "../../vista/imagenesPersonal/fondoCarnet.jpg";

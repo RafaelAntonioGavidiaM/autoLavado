@@ -1,67 +1,120 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
 <div class="container">
   <h2>Lavadero</h2>
   <p>Registrar carros para el servicio de lavado</p>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalParqueaderoReg">Registro</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalLavadoReg">Registro</button>
 
   <!-- Modal -->
-  <div id="modalParqueaderoReg" class="modal fade" role="dialog">
+  <div id="modalLavadoReg" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registro Lavadero</h4>
+          <h4 class="modal-title">Lavado</h4>
         </div>
         <div class="modal-body">
-        <label> Fecha:</label>
-          <input type="date" class="form-control" id="fecha">
+
+          <label> Fecha:</label>
+          <input type="date" class="form-control" id="fechaLavado">
           <label> Carro:</label>
-          <input type="text" class="form-control" id="txtCarro">
+          <select class="form-control" id="selectLavado">
+
+          
+
+
           </select>
-          <label> Valor a pagar:</label>
-          <input type="text" class="form-control" id="txtValor">
-          </div>
+          
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button id="btnGuardarLavado" type="button" class="btn btn-default" data-dismiss="modal">Guardar Lavado</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
 
+
+  <!-- Trigger the modal with a button -->
+ 
+
+  <!-- Modal Modificar -->
+  <div id="modalLavadoMod" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modificar Registro</h4>
+        </div>
+        <div class="modal-body">
+
+          <label> Fecha:</label>
+          <input type="date" class="form-control" id="fechaLavadoMod">
+          <label> Carro:</label>
+          <select class="form-control" id="selectLavadoMod">
+
+          
+
+
+          </select>
+          
+          
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button id="btnModificarLavado" type="button" class="btn btn-default" data-dismiss="modal">Guardar Lavado</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-          <div class="col-lg-6">
+
+
+
+
+
+
+
   <h2>Carros registrados</h2>
-             
-  <table id="tablaCarros" class="table table-hover">
+
+  <table id="tablaCarrosLavado" class="table table-hover">
     <thead>
       <tr>
-        <th>Carro</th>
         <th>Fecha</th>
-        <th>Valor</th>
+        <th>Carro</th>
+        <th>Personal</th>
+        <th>Valor a Pagar</th>
         <th>Acciones</th>
+
       </tr>
     </thead>
-    <tbody id="cuerpoTablaCarros">
-      
+    <tbody id="cuerpoTablaCarrosLavado">
+ 
+
     </tbody>
   </table>
-        
-
-
-    
-</body>
-</html>
