@@ -90,8 +90,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="txtModDueño">Dueño:</label>
-                            <input type="text" class="form-control" id="txtModDueño">
+                            <label for="txtDueño">Dueño:</label>
+                            <select class="form-control" id="modDuenoSelect">
+                            <p id="cargar"></p>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -112,7 +114,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button id="btnModCarro" idCarro="" type="button" class="btn btn-primary">Modificar</button>
+                    <button id="btnModCarro" idCarro="" type="button" class=" btn-primary">Modificar</button>
                 </div>
             </div>
 

@@ -9,6 +9,7 @@ class vehiculosControl{
     public $placa;
     public $imagen;
     public $idCarro;
+    public $imagenAntigua;
 
     public function ctrInsertar(){
         $ObjRespuesta = vehiculosModelo::mdlInsertar($this->modelo,$this->dueño,$this->color,$this->placa,$this->imagen);
@@ -35,6 +36,17 @@ class vehiculosControl{
         $objRespuesta=VehiculosModelo::mdlCargarDuenos();
         echo json_encode($objRespuesta);
 
+    }
+    public function ctrModCarro_1(){
+
+        $objRespuesta =  vehiculosModelo::mdlModificarSinCambioImagen($this->idCarro,$this->modelo,$this->dueño,$this->color,$this->placa,$this->imagen);
+        echo json_encode($objRespuesta);
+
+    }
+    public function ctrModCarro_2(){
+
+        $objRespuesta = vehiculosModelo::mdlModificarConCambioImagen($this->idCarro,$this->modelo,$this->dueño,$this->color,$this->placa,$this->imagen,$this->imagenAntigua);
+        echo json_encode($objRespuesta);
 
     }
 
@@ -66,14 +78,39 @@ if (isset($_POST["listaVehiculos"]) == "ok"){
     $$ObjModCarro->ctrModificar();
 }
 
-if (isset($_POST["eliminarId"])){
+if (isset($_POST["eliminarId"]) && isset($_POST["deleteImagen"])){
     $objRespuesta = new vehiculosControl();
     $objRespuesta->idCarro = $_POST["eliminarId"];
+    $objDeletePersonal->imagen = $_POST["deleteImagen"];
     $objRespuesta->ctrEliminar();
 }
 
 if (isset($_POST["cargarDueno"])) {
     $objRespuesta = new vehiculosControl();
     $objRespuesta->ctrlCargarDuenos();
+}
 
+if ( isset($_POST["opcion3"]) == "imagenNormal") {
+    
+    $ObjModCarro=  new vehiculosControl();
+    $ObjModCarro->idPersonal = $_POST["idModCarro"];   
+    $ObjModCarro->modelo = $_POST["modModelo"];
+    $ObjModCarro->dueño = $_POST["modDueño"];
+    $ObjModCarro->color = $_POST["modColor"];
+    $ObjModCarro->placa = $_POST["modPlaca"];
+    $ObjModCarro->imagen = $_POST["modImagen"];
+    $ObjModCarro-> ctrModCarro_1();
+}
+
+if ( isset($_POST["opcion4"]) == "imagenArray"){
+
+    $ObjModCarro =  new vehiculosControl();
+    $ObjModCarro->idCarro = $_POST["idModCarro"];   
+    $ObjModCarro->modelo = $_POST["modModelo"];
+    $ObjModCarro->dueño = $_POST["modDueño"];
+    $ObjModCarro->color = $_POST["modColor"];
+    $ObjModCarro->placa = $_POST["modPlaca"];
+    $ObjModCarro->imagen = $_FILES["modImagen"];
+    $ObjModCarro->ImagenAntigua = $_POST["ImagenAnterior"];
+    $ObjModCarro-> ctrModCarro_2();
 }
