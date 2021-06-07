@@ -22,34 +22,11 @@ $(document).ready(function() {
             success: function(respuesta) {
 
                 var concatenacion = "";
-                concatenacion += ' <img src="' + respuesta["foto"] + '" > ';
-                concatenacion += '<p>' + ' ' + respuesta["nombre"] + ' ' + '</p>';
-                concatenacion += '<p>' + ' ' + respuesta["apellidos"] + ' ' + '</p>';
+                concatenacion += ' <img id="usuarioLogin"  src="' + respuesta["foto"] + '" > ';
+                concatenacion += '<div id="textLogin">' + respuesta["nombre"] +'' ;
+                concatenacion += ' ' + respuesta["apellidos"] + '</div>';
 
-
-
-                $("#datosPersonales").html(concatenacion);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                $("#Usuario").html(concatenacion);
 
             }
 
