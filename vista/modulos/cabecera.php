@@ -26,6 +26,8 @@
     <script src='vista/js/cliente.js'></script>
     <script src='vista/js/usuarioLogin.js'></script>
     <script src='vista/js/parqueadero.js'></script>
+    <script src='vista/js/lavado.js'></script>
+
 
 </head>
 
