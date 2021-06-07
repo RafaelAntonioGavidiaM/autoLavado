@@ -74,7 +74,7 @@ class VehiculosModelo
         return $mensaje;
     }
 
-    public static function mdlEliminar($idCarro)
+    public static function mdlEliminar($idCarro,$deleteImagen)
     {
         $mensaje = "";
         if ($deleteImagen == "null") {
@@ -94,7 +94,8 @@ class VehiculosModelo
                
                 $mensaje = $e;
     
-            }else{
+            }
+        } else {
                 if (unlink("../".$deleteImagen)) { 
             
            
@@ -120,6 +121,10 @@ class VehiculosModelo
                     $mensaje = "No se puede eliminar la imagen";
                 }
             }
+
+        
+    
+
             
         return $mensaje;
     }
@@ -130,7 +135,7 @@ class VehiculosModelo
 
         try {
 
-            $objRespuesta = conexion::conectar()->prepare("UPDATE carrro SET modelo='$modelo',dueño='$dueño',color='$color', placa='$placa',imagen='$imagen' WHERE idCarro='$Carro'");
+            $objRespuesta = conexion::conectar()->prepare("UPDATE carro SET modelo='$modelo',idDueño='$dueño',color='$color', placa='$placa',imagen='$imagen' WHERE idCarro='$idCarro'");
 
         if ($objRespuesta->execute()){
             $mensaje = "ok";
@@ -160,11 +165,11 @@ class VehiculosModelo
             
             if (move_uploaded_file($imagen["tmp_name"], $rutaArchivo)) {
 
-                if (unlink("../".$fotoAnterior)){
+                if (unlink("../".$imagenAnterior)){
 
                     try {
         
-                        $objRespuesta = conexion::conectar()->prepare("UPDATE carro SET modelo='$modelo',dueño='$dueño',color='$color', placa='$placa',imagen='$imagen' WHERE idCarro='$idCarro'");
+                        $objRespuesta = conexion::conectar()->prepare("UPDATE carro SET modelo='$modelo',idDueño='$dueño',color='$color', placa='$placa',imagen='$url' WHERE idCarro='$idCarro'");
             
                     if ($objRespuesta->execute()){
                         $mensaje = "ok";
@@ -189,7 +194,7 @@ class VehiculosModelo
         return $mensaje;
 
     }
-}
+
 
     public static function mdlCargarDuenos()
     {
@@ -203,3 +208,6 @@ class VehiculosModelo
         return $lista;
     }
 }
+
+
+    

@@ -5,7 +5,7 @@ $(document).ready(function() {
     /*--------------------------------------------------------------------------------------------------------*/
 
     cargarDatos();
-    cargarDueno();
+    cargarDueno(1, "");
     $("#btnGuardarVehiculo").click(function() {
         alert("HolaMundox3");
         var modelo = $("#txtModelo").val();
@@ -14,8 +14,7 @@ $(document).ready(function() {
         var placa = $("#txtPlaca").val();
         var imagen = document.getElementById("txtImagen").files[0];
         var objData = new FormData();
-        alert(modelo);
-        alert(imagen);
+
         objData.append("modelo", modelo);
         objData.append("dueño", dueño);
         objData.append("color", color);
@@ -32,13 +31,8 @@ $(document).ready(function() {
             processData: false,
             success: function(respuesta) {
                 if (respuesta == "ok") {
-                    alert(respuesta); //si realizo registro
-
-
-
+                    alert(respuesta); //si realizo registro   
                 }
-
-
             }
         })
     })
@@ -47,7 +41,7 @@ $(document).ready(function() {
     /*-----------------------------------------------CARGAR DATOS DUEÑO---------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------*/
 
-    function cargarDueno() {
+    function cargarDueno(opcion, idDueno) {
         var mensaje = "ok";
         var objData = new FormData();
 
@@ -63,19 +57,49 @@ $(document).ready(function() {
             processData: false,
             success: function(respuesta) {
 
-                console.log(respuesta);
+                if (opcion == 1) {
+                    console.log(respuesta);
 
-                var interface = '';
-                respuesta.forEach(cargarduenoCarro);
+                    var interface = '';
+                    respuesta.forEach(cargarduenoCarro);
 
-                function cargarduenoCarro(item, index) {
+                    function cargarduenoCarro(item, index) {
 
-                    interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
+                        interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
+                    }
+
+                    //alert(interface);
+
+                    $("#duenoSelect").html(interface);
+
+                } else if (opcion == 2) {
+
+                    var interface = '';
+                    var principal = "";
+                    respuesta.forEach(cargarduenoCarro);
+
+                    function cargarduenoCarro(item, index) {
+
+                        if (item.idDueño == idDueno) {
+                            principal = '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
+
+                        } else {
+
+                            interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
+
+                        }
+
+
+                    }
+
+
+
+                    $("#modDuenoSelect").html(principal + interface);
+
                 }
 
 
 
-                $("#duenoSelect").html(interface);
             }
         })
     }
@@ -114,8 +138,8 @@ $(document).ready(function() {
                     interface += '<td><img src="' + item.imagen + '" high="40" width="40"></td>';
                     interface += '<td>';
                     interface += '<div class="btn-group">';
-                    interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editarVehiculos" idCarro="' + item.idCarro + '"  modelo="' + item.modelo + '" dueño="' + item.idDueño + '" color="' + item.color + '" placa="' + item.placa + '" imagen="' + item.imagen + '" data-toggle="modal" data-target="#modalEditar"><span class="glyphicon glyphicon-pencil"></span></button>';
-                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminarVehiculos" idCarro="' + item.idCarro + '"><span class="glyphicon glyphicon-trash"></span></button>';
+                    interface += '<button type="button" class="btn btn-warning" title="Editar" id="btn-editarVehiculos" idCarro="' + item.idCarro + '"  modelo="' + item.modelo + '" dueño="' + item.idDueño + '" color="' + item.color + '" placa="' + item.placa + '" imagen="' + item.imagen + '" data-toggle="modal" data-target="#modalEditarVehiculo"><span class="glyphicon glyphicon-pencil"></span></button>';
+                    interface += '<button type="button" class="btn btn-danger" title="Eliminar" id="btn-eliminarVehiculos" idCarro="' + item.idCarro + '"  imagen="' + item.imagen + '"><span class="glyphicon glyphicon-trash"></span></button>';
                     interface += '</div>';
                     interface += '</td>';
                     interface += '</tr>';
@@ -130,22 +154,27 @@ $(document).ready(function() {
     /*--------------------------------------------------------------------------------------------------------*/
     /*-----------------------------------------------EDITAR DATOS---------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------*/
+    var imagen = "";
+    $("#tablacarroVehiculo").on("click", "#btn-editarVehiculos", function() {
 
-    $("#tablacarro").on("click", "#btn-editarVehiculos", function() {
+
+        alert("hola");
         var idCarro = $(this).attr("idCarro");
         var modelo = $(this).attr("modelo");
-        var dueño = $(this).attr("dueno");
+        var dueño = $(this).attr("dueño");
         var color = $(this).attr("color");
         var placa = $(this).attr("placa");
         imagen = $(this).attr("imagen");
-        $("#modimagen").attr("src",imagen);
+        $("#imagenVehiculos").attr("src", imagen);
 
         $("#txtModModelo").val(modelo);
-        $("#modDuenoSelect").val(dueño);
+
         $("#txtModColor").val(color);
         $("#txtModPlaca").val(placa);
         $("#txtModImagen").val();
         $("#btnModCarro").attr("idCarro", idCarro);
+
+        cargarDueno(2, dueño);
     })
 
 
@@ -153,38 +182,61 @@ $(document).ready(function() {
     /*---------------------------------------------ELIMINAR DATOS---------------------------------------------*/
     /*--------------------------------------------------------------------------------------------------------*/
 
-    $("#tablaCarro").on("click", "#btn-eliminarVehiculos", function(){
-       
-        var idCarro = $(this).attr("idCarro");
-    
-        swal({
-            title: "¿Esta seguro de eliminar el registro?",
-            text: "Recuerde que si lo elimina no tendra formas de recuperarlo",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
+    $("#tablacarroVehiculo").on("click", "#btn-eliminarVehiculos", function() {
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var idCarro = $(this).attr("idCarro");
+                var imagen = $(this).attr("imagen");
+
+
+                var objData = new FormData();
+                objData.append("eliminarId", idCarro);
+                objData.append("deleteImagen", imagen);
+
+
+
+
+
                 $.ajax({
                     url: "control/vehiculosControl.php",
                     type: "post",
-                    data:{'idCarro':idCarro},
-                    success:function(){
-                        swal(
-                            "Registro eliminado exitosamente!", {
-                            icon: "success",
-                        });
-                        cargarDatos();          
+                    dataType: "json",
+                    data: objData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(respuesta) {
+                        if (respuesta == "ok") {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+
+                            cargarDatos();
+                        }
                     }
-               })
-            }
-            else {
-              swal("Su registro esta a salvo!",{
-              icon:"success",
-              })
+                })
+
+
             }
         })
+
+
+
+
+
+
     })
 
 
@@ -203,43 +255,42 @@ $(document).ready(function() {
         var opcion4 = ""
 
         var imagenAnterior = "";
-        if ($("#txtModImagen").val() == null ||  $("#txtModImagen").val() == ""  ) {
+        if ($("#txtModImagen").val() == null || $("#txtModImagen").val() == "") {
 
             alert("Hola");
             rutaImagen = imagen;
-            opcion3 ="imagenNormal";
-        }
-        else{
+            opcion3 = "imagenNormal";
+        } else {
 
             alert("Hola mundo")
             var imagenNueva = document.getElementById("txtModImagen").files[0];
             rutaImagen = imagenNueva;
-            imagenAnterior = foto;
-            opcion4 ="imagenArray";
-            
-        }   
+            imagenAnterior = imagen;
+            opcion4 = "imagenArray";
+
+        }
         alert(rutaImagen);
-        
+
         var objData = new FormData();
         if (opcion3 = "imagenNormal" && opcion4 == "") {
             alert("Hola")
-            objData.append("opcion3",opcion3);
-            
-        }else if (opcion4 = "imagenArray" && opcion3 == "") {
+            objData.append("opcion3", opcion3);
+
+        } else if (opcion4 = "imagenArray" && opcion3 == "") {
             alert("Hola Mundo")
-            objData.append("opcion4",opcion4);
+            objData.append("opcion4", opcion4);
         } else {
-            
+
         }
 
-        var objData = new FormData();
+
         objData.append("modIdCarro", idCarro);
         objData.append("modModelo", modelo);
         objData.append("modDueño", dueño);
         objData.append("modColor", color);
         objData.append("modPlaca", placa);
         objData.append("modImagen", rutaImagen);
-        objData.append("imagenAnterior",imagenAnterior);
+        objData.append("imagenAnterior", imagenAnterior);
         $.ajax({
             url: "control/vehiculosControl.php",
             type: "post",
@@ -257,7 +308,9 @@ $(document).ready(function() {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                alert(respuesta);
                 cargarDatos();
+
             }
         })
     })

@@ -46,22 +46,24 @@
         </div>
 
         <div class="col-lg-8">
-            <center>
+           
                 <h2>Registro Autos</h2>
-                <center>
+                
                     <p>Organice informacion sobre registro de Autos</p>
                     <br>
 
-                    <table id="tablaUsuarios" class="table table-bordered">
+                    <table id="tablacarroVehiculo" class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>Modelo</th>
-                                <th>Dueño</th>
-                                <th>Color</th>
-                                <th>Placa</th>
-                                <th>Imagen</th>
-                                <th>Acciones</th>
-                            </tr>
+                            <b>
+                                <tr>
+                                    <th>Modelo</th>
+                                    <th>Dueño</th>
+                                    <th>Color</th>
+                                    <th>Placa</th>
+                                    <th>Imagen</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            <b>
                         </thead>
 
                         <tbody id="cuerpoTablacarro">
@@ -73,7 +75,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="modalEditar" role="dialog">
+    <div class="modal fade" id="modalEditarVehiculo" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -105,6 +107,13 @@
                             <label for="txtModPlaca">Placa:</label>
                             <input type="text" class="form-control" id="txtModPlaca">
                         </div>
+
+                        <div class="form-group">
+                            <img id="imagenVehiculos" src="" alt="">
+                        </div>
+
+
+
 
                         <div class="form-group">
                             <label for="txtModImagen">Imagen:</label>
