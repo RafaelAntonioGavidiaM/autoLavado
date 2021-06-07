@@ -22,7 +22,7 @@ class vehiculosControl{
     }
 
     public function ctrEliminar(){
-        $objRespuesta = vehiculosModelo::mdlEliminar($this->idcarro);
+        $objRespuesta = vehiculosModelo::mdlEliminar($this->idCarro,$this->imagen);
         echo json_encode($objRespuesta);
     }
 
@@ -67,21 +67,23 @@ if (isset($_POST["listaVehiculos"]) == "ok"){
     $ObjListarVehiculos->ctrListarTodos();
  }
 
+ /*
  if (isset($_POST["modIdCarro"]) && isset($_POST["modModelo"]) && isset($_POST["modDueño"]) && isset($_POST["modColor"])  && isset($_POST["modPlaca"]) && isset($_POST["modImagen"])){
     $ObjModCarro = new vehiculosControl();
-    $$ObjModCarro->idCarro = $_POST["modIdCarro"];
-    $$ObjModCarro->modelo = $_POST["modModelo"];
-    $$ObjModCarro->dueño = $_POST["modDueño"];
-    $$ObjModCarro->color = $_POST["modColor"];
-    $$ObjModCarro->placa = $_POST["modPlaca"];
-    $$ObjModCarro->imagen = $_POST["modImagen"];
-    $$ObjModCarro->ctrModificar();
+    $ObjModCarro->idCarro = $_POST["modIdCarro"];
+    $ObjModCarro->modelo = $_POST["modModelo"];
+    $ObjModCarro->dueño = $_POST["modDueño"];
+    $ObjModCarro->color = $_POST["modColor"];
+    $ObjModCarro->placa = $_POST["modPlaca"];
+    $ObjModCarro->imagen = $_POST["modImagen"];
+    $ObjModCarro->ctrModificar();
 }
+*/
 
 if (isset($_POST["eliminarId"]) && isset($_POST["deleteImagen"])){
     $objRespuesta = new vehiculosControl();
     $objRespuesta->idCarro = $_POST["eliminarId"];
-    $objDeletePersonal->imagen = $_POST["deleteImagen"];
+    $objRespuesta->imagen = $_POST["deleteImagen"];
     $objRespuesta->ctrEliminar();
 }
 
@@ -93,7 +95,7 @@ if (isset($_POST["cargarDueno"])) {
 if ( isset($_POST["opcion3"]) == "imagenNormal") {
     
     $ObjModCarro=  new vehiculosControl();
-    $ObjModCarro->idPersonal = $_POST["idModCarro"];   
+    $ObjModCarro->idCarro = $_POST["modIdCarro"];   
     $ObjModCarro->modelo = $_POST["modModelo"];
     $ObjModCarro->dueño = $_POST["modDueño"];
     $ObjModCarro->color = $_POST["modColor"];
@@ -105,12 +107,12 @@ if ( isset($_POST["opcion3"]) == "imagenNormal") {
 if ( isset($_POST["opcion4"]) == "imagenArray"){
 
     $ObjModCarro =  new vehiculosControl();
-    $ObjModCarro->idCarro = $_POST["idModCarro"];   
+    $ObjModCarro->idCarro = $_POST["modIdCarro"];   
     $ObjModCarro->modelo = $_POST["modModelo"];
     $ObjModCarro->dueño = $_POST["modDueño"];
     $ObjModCarro->color = $_POST["modColor"];
     $ObjModCarro->placa = $_POST["modPlaca"];
     $ObjModCarro->imagen = $_FILES["modImagen"];
-    $ObjModCarro->ImagenAntigua = $_POST["ImagenAnterior"];
+    $ObjModCarro->imagenAntigua = $_POST["imagenAnterior"];
     $ObjModCarro-> ctrModCarro_2();
 }
