@@ -56,7 +56,7 @@
             </nav>
             <div class="contenedor-imagen">
                 <a href="#">
-                    <img src="https://www.nicepng.com/png/full/765-7656705_era-del-vaco-molinette-cinema-drawing.png" alt="">
+                    <img src="vista/imagenesFondo/carwash.png" alt="">
                 </a>
             </div>
         </header>
