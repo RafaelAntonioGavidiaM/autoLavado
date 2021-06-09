@@ -75,6 +75,32 @@ class lavadoModelo
         return $lista;
     }
 
+    public static function mdlCargarTablaInformePorCarroPromocion($idCarro)
+    {
+
+
+
+        $objConsulta = conexion::conectar()->prepare("SELECT l.idlavado,l.fecha,c.idCarro,c.modelo,c.placa,p.idPersonal,p.nombre,p.apellidos,l.valorPagar from lavado as l inner join carro as c on c.idCarro=l.idCarro inner join personal as p on p.idPersonal=l.idPersonal where c.idCarro=:idCarro and l.valorPagar=0");
+        $objConsulta->bindParam(":idCarro", $idCarro);
+        $objConsulta->execute();
+        $lista = $objConsulta->fetchAll();
+        $objConsulta = null;
+        return $lista;
+    }
+
+    public static function mdlCargarTablaInformePorCarro($idCarro)
+    {
+
+
+
+        $objConsulta = conexion::conectar()->prepare("SELECT l.idlavado,l.fecha,c.idCarro,c.modelo,c.placa,p.idPersonal,p.nombre,p.apellidos,l.valorPagar from lavado as l inner join carro as c on c.idCarro=l.idCarro inner join personal as p on p.idPersonal=l.idPersonal where c.idCarro=:idCarro and l.valorPagar=8000");
+        $objConsulta->bindParam(":idCarro", $idCarro);
+        $objConsulta->execute();
+        $lista = $objConsulta->fetchAll();
+        $objConsulta = null;
+        return $lista;
+    }
+
     public static function mdlCargarTablaId($idLavado)
     {
 

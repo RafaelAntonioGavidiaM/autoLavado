@@ -27,6 +27,7 @@
     <script src='vista/js/usuarioLogin.js'></script>
     <script src='vista/js/parqueadero.js'></script>
     <script src='vista/js/lavado.js'></script>
+    <script src='vista/js/informe.js'></script>
 
 
 </head>
@@ -47,6 +48,8 @@
                         <li><a href="registroVehiculos">Registro Vehiculos</a></li>
                         <li><a href="parqueadero" id="btnParqueadero">Parqueadero</a></li>
                         <li><a href="lavado">Lavado</a></li>
+                        <li><a href="informe">Informes</a></li>
+                       
 
 
                     </ul>

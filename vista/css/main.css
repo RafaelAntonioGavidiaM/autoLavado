@@ -1,60 +1,59 @@
-
-
-#usuarioLogin{
-
+#usuarioLogin {
     border-radius: 50px;
     width: 50px;
     height: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-
-
 }
+
+
 /* * ============================== */
+
+
 /* * ============ HEADER ========== */
+
+
 /* * ============================== */
 
-#textLogin{
-
+#textLogin {
     color: lavender;
     font-family: Arial;
-    font-size:small;
+    font-size: small;
     text-align: center;
-
-
 }
 
-.navbar{
+.navbar {
     position: sticky;
     top: 0%;
 }
 
+
 /* * ============================== */
+
+
 /* * ===== CONTENEDOR IMAGEN ====== */
+
+
 /* * ============================== */
 
 .contenedor-imagen {
-	height: 30vh;
+    height: 30vh;
 }
 
 .contenedor-imagen img {
-    
-	width: 100%;
-	height: 50%;
-	vertical-align: top;
-	object-fit: fill;
-	object-position: 0 bottom;
+    width: 100%;
+    height: 50%;
+    vertical-align: top;
+    object-fit: fill;
+    object-position: 0 bottom;
 }
 
-body{
-
+body {
     background-image: url("../imagenesFondo/fondo3.jpg");
+    background-size: cover;
 }
 
-
-
-
-
-
-
+#tituloInforme {
+    text-align: center;
+}
