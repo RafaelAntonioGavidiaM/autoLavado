@@ -34,7 +34,7 @@ $(document).ready(function () {
                     interface += '<div class = "btn-group">'
                     interface += '<button type="button" class="btn btn-warning" title="Editar"  id="btnEditarPersonal" idPersonal="' + item.idPersonal + '" documento="' + item.documento + '" nombre="' + item.nombre + '" apellidos="' + item.apellidos + '" foto="' + item.foto + '" contraseña="' + item.contraseña + '" data-toggle="modal" data-target="#ventanaModPersonal"><span class="glyphicon glyphicon-pencil"></span></button>'
                     interface += '<button type="button" class="btn btn-danger" title ="Eliminar" id="btnEliminarPersonal" idPersonal="' + item.idPersonal + '" foto="' + item.foto + '"><span class="glyphicon glyphicon-remove"></span></button>';
-                    interface += '<button type="button" class="btn btn-info" title ="PDF" id="btnPdf"  idPersonal="' + item.idPersonal + '" foto="' + item.foto + '"><span class="glyphicon glyphicon-pencil"></span></button>';
+                    interface += '<button type="button" class="btn btn-info" title ="PDF" id="btnPdf"  idPersonal="' + item.idPersonal + '" foto="' + item.foto + '"><span class="	glyphicon glyphicon-file"></span></button>';
                     interface += '</tr>';
 
                 }
@@ -56,35 +56,50 @@ $(document).ready(function () {
         var foto = document.getElementById("txtFoto").files[0];
         var contraseña = $("#txtRegContraseña").val();
 
-        var objData = new FormData();
-        objData.append("documento", docuemnto);
-        objData.append("nombre", nombre);
-        objData.append("apellidos", apellidos);
-        objData.append("foto", foto);
-        objData.append("contraseña", contraseña);
+        if (docuemnto == "" || nombre == "" || apellidos == "" || foto == null || contraseña == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Nulos',
+                text: 'Hay cajas Nulas!',
+
+            })
+
+        } else {
+
+            var objData = new FormData();
+            objData.append("documento", docuemnto);
+            objData.append("nombre", nombre);
+            objData.append("apellidos", apellidos);
+            objData.append("foto", foto);
+            objData.append("contraseña", contraseña);
 
 
-        $.ajax({
+            $.ajax({
 
-            url: "control/personalControl.php",
-            type: "post",
-            dataType: "json",
-            data: objData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (respuesta) {
+                url: "control/personalControl.php",
+                type: "post",
+                dataType: "json",
+                data: objData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (respuesta) {
 
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registro Exitoso',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                listaPersonal();
-            }
-        })
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Registro Exitoso',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    listaPersonal();
+                }
+
+            })
+
+        }
+
+
 
 
     })
@@ -99,11 +114,11 @@ $(document).ready(function () {
         var nombre = $(this).attr("nombre");
         var apellidos = $(this).attr("apellidos");
         foto = $(this).attr("foto");
-        $("#modFoto").attr("src",foto);
+        $("#modFoto").attr("src", foto);
         var contraseña = $(this).attr("contraseña")
-     
 
-        
+
+
 
         $("#btnModPersonal").attr("idPersonal", idPersonal);
         $("#txtModDocumento").val(docuemnto);
@@ -111,7 +126,7 @@ $(document).ready(function () {
         $("#txtModApellidos").val(apellidos);
         $("#txtModContraseña").val(contraseña);
         $("#txtModFoto").val();
-       
+
 
 
 
@@ -125,66 +140,84 @@ $(document).ready(function () {
         var rutaFoto = "";
         var opcion1 = "";
         var opcion2 = "";
-        
+
         var fotoAnterior = "";
-        if ($("#txtModFoto").val() == null ||  $("#txtModFoto").val() == ""  ) {
+        if ($("#txtModFoto").val() == null || $("#txtModFoto").val() == "") {
 
-            alert("hola");
+           
             rutaFoto = foto;
-            opcion1 ="fotoNormal";
+            opcion1 = "fotoNormal";
         }
-        else{
+        else {
 
-            alert("hola mundo")
+           
             var fotoNueva = document.getElementById("txtModFoto").files[0];
             rutaFoto = fotoNueva;
             fotoAnterior = foto;
-            opcion2 ="fotoArray";
-            
-        }   
-        alert(rutaFoto);
-        var contraseña = $("#txtModContraseña").val();
+            opcion2 = "fotoArray";
 
-        var objData = new FormData();
-        if (opcion1 = "fotoNormal" && opcion2 == "") {
-            alert("hola")
-            objData.append("opcion1",opcion1);
-            
-        }else if (opcion2 = "fotoArray" && opcion1 == "") {
-            alert("hola Mundo")
-            objData.append("opcion2",opcion2);
-        } else {
-            
         }
-            
-        objData.append("idModPersonal", idPersonal);
-        objData.append("modDocumento", docuemnto);
-        objData.append("modNombre", nombre);
-        objData.append("modApellidos", apellidos);
-        objData.append("modFoto", rutaFoto);
-        objData.append("modContraseña", contraseña);
-        objData.append("fotoAnterior",fotoAnterior);
-        $.ajax({
+       
+        var contraseña = $("#txtModContraseña").val();
+        if (docuemnto == "" || nombre == "" || apellidos == "" || contraseña == "") {
 
-            url: "control/personalControl.php",
-            type: "post",
-            dataType: "json",
-            data: objData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (respuesta) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Nulos',
+                text: 'Hay cajas Nulas!',
 
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registro Exitoso',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                listaPersonal();
+            })
+
+        } else {
+
+            var objData = new FormData();
+            if (opcion1 = "fotoNormal" && opcion2 == "") {
+                
+                objData.append("opcion1", opcion1);
+
+            } else if (opcion2 = "fotoArray" && opcion1 == "") {
+                
+                objData.append("opcion2", opcion2);
+            } else {
+
             }
-        })
+
+            objData.append("idModPersonal", idPersonal);
+            objData.append("modDocumento", docuemnto);
+            objData.append("modNombre", nombre);
+            objData.append("modApellidos", apellidos);
+            objData.append("modFoto", rutaFoto);
+            objData.append("modContraseña", contraseña);
+            objData.append("fotoAnterior", fotoAnterior);
+            $.ajax({
+
+                url: "control/personalControl.php",
+                type: "post",
+                dataType: "json",
+                data: objData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (respuesta) {
+
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Registro Exitoso',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    listaPersonal();
+
+
+
+
+                }
+            })
+
+        }
+
+
 
 
     })
@@ -252,7 +285,7 @@ $(document).ready(function () {
 
     })
 
-    
+
     $("#tablaPersonal").on("click", "#btnPdf", function () {
 
         var idPersonal = $(this).attr("idPersonal");
@@ -261,7 +294,7 @@ $(document).ready(function () {
 
     })
 
-    $("#btnNewPersonal").click(function (){
+    $("#btnNewPersonal").click(function () {
 
 
         $("#txtRegDocumento").val("");
@@ -273,7 +306,7 @@ $(document).ready(function () {
     })
 
 
-    $("#btnModPersonal").click(function (){
+    $("#btnModPersonal").click(function () {
 
         $("#txtModFoto").val("");
 

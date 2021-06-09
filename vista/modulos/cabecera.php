@@ -15,6 +15,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='vista/css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='vista/css/personal.css'>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -38,17 +39,16 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-
+                        <img src="../imagenesFondo/logo autolavado.png" alt="">
+                        <a class="navbar-brand" href="#">CarWash</a>
                     </div>
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-center">
                         <li id="Usuario"></li>
-                        <li><a href="personal">Personal</a></li>
-                        <li><a href="cliente">Clientes</a></li>
-                        <li><a href="registroVehiculos">Registro Vehiculos</a></li>
-                        <li><a href="parqueadero" id="btnParqueadero">Parqueadero</a></li>
-                        <li><a href="lavado">Lavado</a></li>
-
-
+                        <li><a href="personal">👷🏽‍♂️Personal</a></li>
+                        <li><a href="cliente">👫🏽Clientes</a></li>
+                        <li><a href="registroVehiculos">🚗Registro Vehiculos</a></li>
+                        <li><a href="parqueadero" id="btnParqueadero">🅿️Parqueadero</a></li>
+                        <li><a href="lavado">🌊Lavado</a></li>
                     </ul>
                 </div>
             </nav>

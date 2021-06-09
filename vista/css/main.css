@@ -3,13 +3,25 @@
 #usuarioLogin{
 
     border-radius: 50px;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 
 
+}
+
+.navbar-brand{
+
+    background-image: "../imagenesFondo/logo autolavado.png";
+
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
 }
 /* * ============================== */
 /* * ============ HEADER ========== */
@@ -19,8 +31,8 @@
 
     color: lavender;
     font-family: Arial;
-    font-size:small;
-    text-align: center;
+    font-size:smaller;
+    text-align: right;
 
 
 }
@@ -49,7 +61,8 @@
 
 body{
 
-    background-image: url("../imagenesFondo/fondo3.jpg");
+    background-image: url("../imagenesFondo/fondo2.jpg");
+    background-size: cover;
 }
 
 

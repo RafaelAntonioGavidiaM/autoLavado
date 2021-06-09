@@ -33,9 +33,9 @@ class PersonalModelo
 
         $mensaje = "";
         $nombreArchivo = $foto['name'];
-        $rutaArchivo = "../vista/imagenesPersonal/" . $nombreArchivo;
         $extension = substr($nombreArchivo, -4);
-        $url =  "vista/imagenesPersonal/" . $nombreArchivo;
+        $rutaArchivo = "../vista/imagenesPersonal/" . $documento . $extension;
+        $url =  "vista/imagenesPersonal/" . $documento . $extension;
 
 
         if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
@@ -57,11 +57,9 @@ class PersonalModelo
                         $mesnaje = "error";
                     }
                 } catch (Exception $e) {
-                    
+
                     $mensaje = $e;
-
                 }
-
             } else {
                 $mensaje = "no fue posible subir el archivo";
             }
@@ -73,149 +71,133 @@ class PersonalModelo
         return $mensaje;
     }
 
-    public static function mdlModificarPersonal(){
 
-
-
-
-
-
-
-    }
-
-    public static function mdlEliminarPersonal($idPersonal,$deleteFoto){
+    public static function mdlEliminarPersonal($idPersonal, $deleteFoto)
+    {
 
         $mensaje = "";
         if ($deleteFoto == "null") {
 
             try {
                 $objRespuesta = conexion::conectar()->prepare("DELETE FROM personal WHERE idPersonal='$idPersonal'");
-               
-        
+
+
                 if ($objRespuesta->execute()) {
                     $mensaje = "ok";
-                }else {
+                } else {
                     $mesnaje = "error";
                 }
-        
-                $objRespuesta = null;
 
+                $objRespuesta = null;
             } catch (Exception $e) {
-               
+
                 $mesanje = $e;
-    
             }
-        }else {
-            if (unlink("../".$deleteFoto)) { 
-            
-           
+        } else {
+            if (unlink("../" . $deleteFoto)) {
+
+
                 try {
                     $objRespuesta = conexion::conectar()->prepare("DELETE FROM personal WHERE idPersonal='$idPersonal'");
-                   
-            
+
+
                     if ($objRespuesta->execute()) {
                         $mensaje = "ok";
-                    }else {
+                    } else {
                         $mesnaje = "error";
                     }
-            
+
                     $objRespuesta = null;
                 } catch (Exception $e) {
-                   
+
                     $mesanje = $e;
-        
                 }
-            } 
-            else { 
-    
+            } else {
+
                 $mensaje = "No se puede eliminar la foto";
             }
         }
-       
 
-        
-      
-        
+
+
+
+
         return $mensaje;
-
-
     }
 
 
-    public static function mdlModificarSinCambioFoto($idPersonal,$documento,$nombre,$apellidos,$foto,$contraseña){
+    public static function mdlModificarSinCambioFoto($idPersonal, $documento, $nombre, $apellidos, $foto, $contraseña)
+    {
 
 
         $mensaje =  "";
-        
+
 
         try {
 
             $objRespuesta = conexion::conectar()->prepare("UPDATE personal SET documento='$documento',nombre='$nombre',apellidos='$apellidos', foto='$foto',contraseña='$contraseña' WHERE idPersonal='$idPersonal'");
 
-        if ($objRespuesta->execute()){
-            $mensaje = "ok";
-        }else {
-            $mensaje = "error";
-        }
+            if ($objRespuesta->execute()) {
+                $mensaje = "ok";
+            } else {
+                $mensaje = "error";
+            }
 
-        $objRespuesta =  null;
-
+            $objRespuesta =  null;
         } catch (Exception $e) {
 
-           $mensaje = $e;
+            $mensaje = $e;
         }
-        
+
 
 
         return $mensaje;
-
-
     }
 
 
-    public static function mdlModificarConCambioFoto($idPersonal,$documento,$nombre,$apellidos,$foto,$fotoAnterior,$contraseña){
+    public static function mdlModificarConCambioFoto($idPersonal, $documento, $nombre, $apellidos, $foto, $fotoAnterior, $contraseña)
+    {
 
         $mensaje = "";
         $nombreArchivo = $foto['name'];
-        $rutaArchivo = "../vista/imagenesPersonal/" . $nombreArchivo;
         $extension = substr($nombreArchivo, -4);
-        $url =  "vista/imagenesPersonal/" . $nombreArchivo;
+        $rutaArchivo = "../vista/imagenesPersonal/" . $documento . $extension;
+        $url =  "vista/imagenesPersonal/" . $documento . $extension;
+
+
 
         if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
-            
+
             if (move_uploaded_file($foto["tmp_name"], $rutaArchivo)) {
 
-                if (unlink("../".$fotoAnterior)){
+                if (unlink("../" . $fotoAnterior)) {
 
                     try {
-        
+
                         $objRespuesta = conexion::conectar()->prepare("UPDATE personal SET documento='$documento',nombre='$nombre',apellidos='$apellidos', foto='$url',contraseña='$contraseña' WHERE idPersonal='$idPersonal'");
-            
-                    if ($objRespuesta->execute()){
-                        $mensaje = "ok";
-                    }else {
-                        $mensaje = "error";
-                    }
-            
-                    $objRespuesta =  null;
-            
+
+                        if ($objRespuesta->execute()) {
+                            $mensaje = "ok";
+                        } else {
+                            $mensaje = "error";
+                        }
+
+                        $objRespuesta =  null;
                     } catch (Exception $e) {
-            
-                       $mensaje = $e;
+
+                        $mensaje = $e;
                     }
-                    
-                }else {
-                    
+                } else {
+
                     $mensaje = "nose puede cambiar la foto del registro";
                 }
-        
             }
         }
-        
-        
+
+
+
+
+
         return $mensaje;
-
-
-        
     }
 }
