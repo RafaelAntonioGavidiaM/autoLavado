@@ -6,6 +6,7 @@
     </div>
 
     <br>
+    <div id="blanco">
     <div class="row">
         <div class="col-lg-4">
             <form action="" enctype="multipart/form-data">
@@ -18,7 +19,7 @@
                     <label for="txtDueño">Dueño:</label>
                     <select class="form-control" id="duenoSelect">
 
-                    
+
 
                         <p id="cargar"></p>
                     </select>
@@ -46,30 +47,34 @@
         </div>
 
         <div class="col-lg-8">
-           
+
+            
+
                 <h2>Registro Autos</h2>
-                
-                    <p>Organice informacion sobre registro de Autos</p>
-                    <br>
 
-                    <table id="tablacarroVehiculo" class="table table-bordered">
-                        <thead>
+                <p>Organice informacion sobre registro de Autos</p>
+                <br>
+
+                <table id="tablacarroVehiculo" class="table table-bordered">
+                    <thead>
+                        <b>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Dueño</th>
+                                <th>Color</th>
+                                <th>Placa</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
                             <b>
-                                <tr>
-                                    <th>Modelo</th>
-                                    <th>Dueño</th>
-                                    <th>Color</th>
-                                    <th>Placa</th>
-                                    <th>Imagen</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            <b>
-                        </thead>
+                    </thead>
 
-                        <tbody id="cuerpoTablacarro">
+                    <tbody id="cuerpoTablacarro">
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 
@@ -94,7 +99,7 @@
                         <div class="form-group">
                             <label for="txtDueño">Dueño:</label>
                             <select class="form-control" id="modDuenoSelect">
-                            <p id="cargar"></p>
+                                <p id="cargar"></p>
                             </select>
                         </div>
 

@@ -1,5 +1,7 @@
 <div class="container">
 
+
+<div id="blanco">
  <div class="row">
      <div class="col-lg-4">
   
@@ -56,7 +58,7 @@
            </div>
     </div>
 
- 
+</div>
 
 <!-- Modal -->
   <div class="modal fade" id="modalEditar" role="dialog">

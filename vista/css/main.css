@@ -7,13 +7,8 @@
     margin-right: auto;
 }
 
-
-
-
-.navbar-brand{
-
+.navbar-brand {
     background-image: "../imagenesFondo/logo autolavado.png";
-
 }
 
 .navbar-nav.navbar-center {
@@ -21,6 +16,8 @@
     left: 50%;
     transform: translatex(-50%);
 }
+
+
 /* * ============================== */
 
 
@@ -32,10 +29,8 @@
 #textLogin {
     color: lavender;
     font-family: Arial;
-    font-size:smaller;
+    font-size: smaller;
     text-align: right;
-
-
 }
 
 .navbar {
@@ -64,12 +59,15 @@
     object-position: 0 bottom;
 }
 
-body{
-
+body {
     background-image: url("../imagenesFondo/fondo5.jpg");
     background-size: cover;
 }
 
 #tituloInforme {
     text-align: center;
+}
+
+#blanco {
+    color: white;
 }

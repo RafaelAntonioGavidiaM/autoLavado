@@ -1,3 +1,4 @@
+<div id="blanco">
 <div class="container">
     <h2>Usuarios</h2>
     <div class="container">
@@ -22,6 +23,7 @@
     </table>
 </div>
 
+</div>
 </div>
 
 <!---modal de registro de personal------>

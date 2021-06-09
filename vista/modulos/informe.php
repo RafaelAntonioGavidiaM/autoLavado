@@ -1,9 +1,11 @@
+<div id="blanco">
 <div class="container">
   <label id="tituloInforme">
     <h2> Seleccione el informe a consultar:</h2>
   </label>
 </div>
 <br>
+</div>
 
 
 <div class="container">
