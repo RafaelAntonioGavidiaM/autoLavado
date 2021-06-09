@@ -30,6 +30,14 @@ $(document).ready(function() {
             processData: false,
             success: function(respuesta) {
                 cargarDatos();
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'El registro se a guardado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             }
         })
 

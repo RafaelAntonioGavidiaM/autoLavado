@@ -30,9 +30,14 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function(respuesta) {
-                if (respuesta == "ok") {
-                    alert(respuesta); //si realizo registro   
-                }
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Registro Exitoso',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                cargarDatos();
             }
         })
     })
@@ -79,27 +84,14 @@ $(document).ready(function() {
                     respuesta.forEach(cargarduenoCarro);
 
                     function cargarduenoCarro(item, index) {
-
                         if (item.idDueño == idDueno) {
                             principal = '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
-
                         } else {
-
                             interface += '<option value="' + item.idDueño + '">' + item.nombre + " " + item.apellidos + '</option>';
-
                         }
-
-
                     }
-
-
-
                     $("#modDuenoSelect").html(principal + interface);
-
                 }
-
-
-
             }
         })
     }
@@ -158,7 +150,6 @@ $(document).ready(function() {
     $("#tablacarroVehiculo").on("click", "#btn-editarVehiculos", function() {
 
 
-        alert("hola");
         var idCarro = $(this).attr("idCarro");
         var modelo = $(this).attr("modelo");
         var dueño = $(this).attr("dueño");
@@ -184,15 +175,14 @@ $(document).ready(function() {
 
     $("#tablacarroVehiculo").on("click", "#btn-eliminarVehiculos", function() {
 
-
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '¿Estas seguro?',
+            text: "¡No podrás revertir esto!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '¡Sí, !Eliminalo!'
         }).then((result) => {
             if (result.isConfirmed) {
                 var idCarro = $(this).attr("idCarro");
@@ -202,9 +192,6 @@ $(document).ready(function() {
                 var objData = new FormData();
                 objData.append("eliminarId", idCarro);
                 objData.append("deleteImagen", imagen);
-
-
-
 
 
                 $.ajax({
@@ -227,16 +214,8 @@ $(document).ready(function() {
                         }
                     }
                 })
-
-
             }
         })
-
-
-
-
-
-
     })
 
 
@@ -257,27 +236,21 @@ $(document).ready(function() {
         var imagenAnterior = "";
         if ($("#txtModImagen").val() == null || $("#txtModImagen").val() == "") {
 
-            alert("Hola");
             rutaImagen = imagen;
             opcion3 = "imagenNormal";
         } else {
 
-            alert("Hola mundo")
             var imagenNueva = document.getElementById("txtModImagen").files[0];
             rutaImagen = imagenNueva;
             imagenAnterior = imagen;
             opcion4 = "imagenArray";
 
         }
-        alert(rutaImagen);
-
         var objData = new FormData();
         if (opcion3 = "imagenNormal" && opcion4 == "") {
-            alert("Hola")
             objData.append("opcion3", opcion3);
 
         } else if (opcion4 = "imagenArray" && opcion3 == "") {
-            alert("Hola Mundo")
             objData.append("opcion4", opcion4);
         } else {
 
@@ -302,13 +275,12 @@ $(document).ready(function() {
             success: function(respuesta) {
 
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'top-center',
                     icon: 'success',
                     title: 'Registro Exitoso',
                     showConfirmButton: false,
                     timer: 1500
                 })
-                alert(respuesta);
                 cargarDatos();
 
             }

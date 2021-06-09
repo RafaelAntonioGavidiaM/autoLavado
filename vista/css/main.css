@@ -1,13 +1,11 @@
-
-
-#usuarioLogin{
-
+#usuarioLogin {
     border-radius: 50px;
     width: 35px;
     height: 35px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
 
 
 }
@@ -24,11 +22,14 @@
     transform: translatex(-50%);
 }
 /* * ============================== */
+
+
 /* * ============ HEADER ========== */
+
+
 /* * ============================== */
 
-#textLogin{
-
+#textLogin {
     color: lavender;
     font-family: Arial;
     font-size:smaller;
@@ -37,26 +38,30 @@
 
 }
 
-.navbar{
+.navbar {
     position: sticky;
     top: 0%;
 }
 
+
 /* * ============================== */
+
+
 /* * ===== CONTENEDOR IMAGEN ====== */
+
+
 /* * ============================== */
 
 .contenedor-imagen {
-	height: 30vh;
+    height: 30vh;
 }
 
 .contenedor-imagen img {
-    
-	width: 100%;
-	height: 50%;
-	vertical-align: top;
-	object-fit: fill;
-	object-position: 0 bottom;
+    width: 100%;
+    height: 50%;
+    vertical-align: top;
+    object-fit: fill;
+    object-position: 0 bottom;
 }
 
 body{
@@ -65,9 +70,6 @@ body{
     background-size: cover;
 }
 
-
-
-
-
-
-
+#tituloInforme {
+    text-align: center;
+}

@@ -28,6 +28,7 @@
     <script src='vista/js/usuarioLogin.js'></script>
     <script src='vista/js/parqueadero.js'></script>
     <script src='vista/js/lavado.js'></script>
+    <script src='vista/js/informe.js'></script>
 
 
 </head>

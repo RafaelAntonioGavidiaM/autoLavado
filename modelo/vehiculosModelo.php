@@ -9,9 +9,9 @@ class VehiculosModelo
 
         $mensaje = "";
         $nombreArchivo = $imagen['name'];
-        $rutaArchivo = "../vista/imagenesVehiculos/" . $nombreArchivo;
         $extension = substr($nombreArchivo, -4);
-        $url =  "vista/imagenesVehiculos/" . $nombreArchivo;
+        $rutaArchivo = "../vista/imagenesVehiculos/" .$placa . $extension; 
+        $url =  "vista/imagenesVehiculos/" .$placa . $extension; 
 
 
         if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
@@ -31,7 +31,7 @@ class VehiculosModelo
                     if ($objRespuesta->execute()) {
                         $mensaje = "ok";
                     } else {
-                        $mesnaje = "error";
+                        $mensaje = "error";
                     }
                 } catch (Exception $e) {
 
@@ -157,9 +157,9 @@ class VehiculosModelo
 
         $mensaje = "";
         $nombreArchivo = $imagen['name'];
-        $rutaArchivo = "../vista/imagenesVehiculos/" . $nombreArchivo;
         $extension = substr($nombreArchivo, -4);
-        $url =  "vista/imagenesVehiculos/" . $nombreArchivo;
+        $rutaArchivo = "../vista/imagenesVehiculos/" .$placa . $extension; 
+        $url =  "vista/imagenesVehiculos/" .$placa . $extension; 
 
         if (($extension == ".jpg" || $extension == ".JPG") || ($extension == ".png" || $extension == ".PNG") || ($extension == "jpng"  || $extension == "JPNG")) {
             
